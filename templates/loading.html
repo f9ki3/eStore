@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logging</title>
+    {% include 'header_links.html' %}
+    <style>
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .loadingspinner {
+            display: flex;
+        }
+
+        .loadingspinner div {
+            width: 20px;
+            height: 20px;
+            background-color: #FFA83F;
+            margin: 5px;
+            animation: loading 1.2s infinite ease-in-out;
+        }
+
+        @keyframes loading {
+            0%, 40%, 100% { transform: scale(1); }
+            20% { transform: scale(1.5); }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">  
+        <div class="loadingspinner">
+            <div id="square1"></div>
+            <div id="square2"></div>
+            <div id="square3"></div>
+            <div id="square4"></div>
+            <div id="square5"></div>
+        </div>
+    </div>
+
+    {% include 'footer_links.html' %}
+    <script src="{{ url_for('static', filename='/js/redirect_login.js') }}"></script>
+</body>
+</html>

@@ -1,6 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import timedelta
-import time
 from model import *
 
 app = Flask(__name__)
@@ -22,15 +21,17 @@ def login():
             if username == 'fyke' and password == '123':
                 session.permanent = True
                 session['users'] = username
-                # Simulate a delay to show loading screen
-                time.sleep(2)
-                return redirect('/landing')
+                return redirect('/logging')
             elif username == '' and password == '' or username == '' or password == '': 
                 return render_template('login.html', error=1)
             else:
                 return render_template('login.html', error=2)
         else:
             return render_template('login.html')
+
+@app.route('/logging')
+def loading():
+    return render_template('loading.html')
 
 @app.route('/landing')
 def landing():

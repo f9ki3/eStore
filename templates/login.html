@@ -8,11 +8,8 @@
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-8">
-                <img src="" alt="illustrations">
-            </div>
             <div class="col-12 col-md-4">
-                <form action="/login" method="post" class="form-control mt-5 pb-5 p-3 d-flex flex-column"> 
+                <form action="/login" method="post" style="margin-top: 100px;" class="form-control rounded rounded-4 pb-5 p-5 d-flex flex-column"> 
                     <h1 class="fw-bold text-center mt-3">eStore Login</h1>
                     
                     {% if error == 1 %}
@@ -28,9 +25,16 @@
                     {% endif %}
                     <input class="form-control mb-2" name="uname" type="text" placeholder="username">
                     <input class="form-control mb-2" name="pass" type="text"  placeholder="password">
-                    <button class="btn btn-primary" type="submit">submit</button>
+                    <button class="btn btn-warning" type="submit">Login</button>
                 </form>
             </div>
+            <div class="col-12 col-md-8">
+                <div class="mt-5">
+                    <img style="width: 100%; height: auto; max-width: 100%;" class="mt-5" src="{{ url_for('static', filename='/img/login_illustration.svg') }}" alt="illustrations">
+                </div>
+
+            </div>
+            
         </div>
     </div>
 
