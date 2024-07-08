@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import timedelta
 import time
-from model.accounts import Accounts
-from model.database import Database
-
+from model import *
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
@@ -15,21 +13,24 @@ def index():
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
-    if request.method == 'POST':
-        username = request.form.get('uname')
-        password = request.form.get('pass')
-        if username == 'fyke' and password == '123':
-            session.permanent = True
-            session['users'] = username
-            # Simulate a delay to show loading screen
-            time.sleep(2)
-            return redirect('/landing')
-        elif username == '' and password == '' or username == '' or password == '': 
-            return render_template('login.html', error=1)
-        else:
-            return render_template('login.html', error=2)
+    if 'users' in session:
+        return redirect('/landing')
     else:
-        return render_template('login.html')
+        if request.method == 'POST':
+            username = request.form.get('uname')
+            password = request.form.get('pass')
+            if username == 'fyke' and password == '123':
+                session.permanent = True
+                session['users'] = username
+                # Simulate a delay to show loading screen
+                time.sleep(2)
+                return redirect('/landing')
+            elif username == '' and password == '' or username == '' or password == '': 
+                return render_template('login.html', error=1)
+            else:
+                return render_template('login.html', error=2)
+        else:
+            return render_template('login.html')
 
 @app.route('/landing')
 def landing():
@@ -42,6 +43,11 @@ def logout():
     session.clear()
     return redirect('/login')
 
+@app.route('/settings')
+def settings():
+    return render_template('settings.html')
+
 if __name__ == "__main__":
     Database().createTables()
+    # Accounts().addAccount(date.today(), 'f9ki3', '123', 'Fyke', 'Lleva', 'floterina@gmail.com', '09120912091', 'profile.jpg', 'Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan', 'active')
     app.run(debug=True)

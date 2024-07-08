@@ -1,5 +1,5 @@
 import sqlite3
-
+from datetime import date
 
 class Database:
     def __init__(self):
@@ -104,3 +104,18 @@ class Database:
             supplier_address TEXT 
         )                
         ''')
+
+
+
+class Accounts():
+    #method to add new account
+    def addAccount(self, accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status):
+        conn = Database().conn
+        data = accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status
+        conn.cursor().execute('''
+        INSERT INTO accounts (accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status)
+        VALUES (?,?,?,?,?,?,?,?,?,?)
+        ''', data)
+        conn.commit()
+        print('Added a new account')
+        conn.close()

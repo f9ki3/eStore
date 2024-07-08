@@ -3,18 +3,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    {% include 'header_links.html' %}
 </head>
 <body>
-    <h1>eStore Login</h1>
-    {% if error == 1 %}
-        <p style="color: orange">Please fill the fields</p>
-    {% elif error == 2 %}
-        <p style="color: red">Incorrect credential</p>
-    {% endif %}
-    <form action="/login" method="post"> 
-        <input name="uname" type="text" placeholder="username">
-        <input name="pass" type="text"  placeholder="password">
-        <button type="submit">submit</button>
-    </form>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8">
+                <img src="" alt="illustrations">
+            </div>
+            <div class="col-12 col-md-4">
+                <form action="/login" method="post" class="form-control mt-5 pb-5 p-3 d-flex flex-column"> 
+                    <h1 class="fw-bold text-center mt-3">eStore Login</h1>
+                    
+                    {% if error == 1 %}
+                        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            Please fill the fields
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% elif error == 2 %}
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            Incorrect credential
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    {% endif %}
+                    <input class="form-control mb-2" name="uname" type="text" placeholder="username">
+                    <input class="form-control mb-2" name="pass" type="text"  placeholder="password">
+                    <button class="btn btn-primary" type="submit">submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    {% include 'footer_links.html' %}
 </body>
 </html>
