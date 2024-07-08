@@ -1,0 +1,22 @@
+.navigation{
+    background-color: orange;
+}
+
+.inner-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title, .list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 70px;
+}
+
+.list a{
+    text-decoration: none;
+    color: black;
+    margin-right: 20px;
+}
