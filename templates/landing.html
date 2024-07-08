@@ -1,14 +1,8 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Landing Page</title>
-    {% include 'header_links.html' %}
-  </head>
-  <body>
-    <h1>Landing Page</h1>
-    {% include 'navigation.html' %}
-    {% include 'footer_links.html' %}
-  </body>
-</html>
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+  <h2>Welcome to the Home Page</h2>
+  <p>This is the home page content.</p>
+{% endblock %}
