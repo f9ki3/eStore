@@ -1,6 +1,9 @@
 from flask import Flask, render_template, request, redirect, url_for, session
 from datetime import timedelta
 import time
+from model.accounts import Accounts
+from model.database import Database
+
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
@@ -40,4 +43,5 @@ def logout():
     return redirect('/login')
 
 if __name__ == "__main__":
+    Database().createTables()
     app.run(debug=True)

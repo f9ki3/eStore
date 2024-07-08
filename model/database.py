@@ -10,7 +10,8 @@ class Database:
         self.createTableProduct()
         self.createTableCategory()
         self.createTableUnit()
-        self.createTableStocks()
+        self.createTableDelivery()
+        self.createTableSupplier()
         self.conn.close()
 
     def createTableAccount(self):
@@ -72,18 +73,34 @@ class Database:
         )                
         ''')
 
-    def createTableStocks(self):
+    def createTableDelivery(self):
         cursor = self.conn.cursor()
         cursor.execute('''
-        CREATE TABLE IF NOT EXISTS stocks (
+        CREATE TABLE IF NOT EXISTS delivery (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
-            stock_added_date TEXT,
-            stock_qty INTEGER,
-            stock_expiration TEXT
+            delivery_added_date TEXT,
+            delivery_product TEXT,
+            delivery_cost REAL,
+            delivery_price REAL,
+            delivery_qty INTEGER,
+            delivery_expiration TEXT,
+            delivery_company TEXT, 
+            delivery_name TEXT,  
+            delivery_email TEXT, 
+            delivery_contact TEXT, 
+            delivery_address TEXT
         )                
         ''')
-
-
-if __name__ == "__main__":
-    db = Database()
-    db.createTables()
+    
+    def createTableSupplier(self):
+        cursor = self.conn.cursor()
+        cursor.execute(''' 
+        CREATE TABLE IF NOT EXISTS supplier ( 
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            supplier_company TEXT, 
+            supplier_name TEXT,  
+            supplier_email TEXT, 
+            supplier_contact TEXT, 
+            supplier_address TEXT 
+        )                
+        ''')
