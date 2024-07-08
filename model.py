@@ -69,3 +69,15 @@ class Database():
                        unit_descriiption TEXT
                        )                
         ''')
+    
+    def createTableStocks(self):
+        conn = self.conn
+        cursor = conn.cursor()
+        cursor.execute('''
+        CREATE TABLE IF NOT EXISTS stocks (
+                       id INTEGER PRIMARY KEY AUTOINCREMENT,
+                       stock_added_date TEXT,
+                       stock_qty INTEGER,
+                       stock_expiration TEXT
+                       )                
+        ''')
