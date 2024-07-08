@@ -1,0 +1,20 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+    <h1>eStore Login</h1>
+    {% if error == 1 %}
+        <p style="color: orange">Please fill the fields</p>
+    {% elif error == 2 %}
+        <p style="color: red">Incorrect credential</p>
+    {% endif %}
+    <form action="/login" method="post"> 
+        <input name="uname" type="text" placeholder="username">
+        <input name="pass" type="text"  placeholder="password">
+        <button type="submit">submit</button>
+    </form>
+</body>
+</html>
