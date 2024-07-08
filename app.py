@@ -19,7 +19,7 @@ def login():
             session.permanent = True
             session['users'] = username
             # Simulate a delay to show loading screen
-            # time.sleep(2)
+            time.sleep(2)
             return redirect('/landing')
         elif username == '' and password == '' or username == '' or password == '': 
             return render_template('login.html', error=1)
