@@ -10,7 +10,7 @@
         <div class="row">
             <div class="col-12 col-md-4">
                 <form action="/login" method="post" style="margin-top: 100px;" class="form-control rounded rounded-4 pb-5 p-5 d-flex flex-column"> 
-                    <h1 class="fw-bold text-center mt-3">eStore Login</h1>
+                    <h1 class="fw-bold text-center mt-3">eStore</h1>
                     
                     {% if error == 1 %}
                         <div class="alert alert-warning alert-dismissible fade show" role="alert">
@@ -26,6 +26,14 @@
                     <input class="form-control mb-2" name="uname" type="text" placeholder="username">
                     <input class="form-control mb-2" name="pass" type="text"  placeholder="password">
                     <button class="btn btn-warning" type="submit">Login</button>
+                    
+                    <hr class="mt-5 text-muted">
+
+                    <div class="d-flex flex-row justify-content-between mb-3 mt-3 rounded">
+                        <a href="" class="text-decoration-none text-muted">Customer Service</a>
+                        <a href="" class="text-decoration-none text-muted">Recover Account</a>
+                    </div>
+                    
                 </form>
             </div>
             <div class="col-12 col-md-8">
