@@ -46,9 +46,10 @@ def logout():
 
 @app.route('/settings')
 def settings():
-    return render_template('settings.html')
+    if 'users' in session:
+        return render_template('settings.html')
+    else:
+        return redirect('/login')
 
-if __name__ == "__main__":
-    Database().createTables()
-    # Accounts().addAccount(date.today(), 'f9ki3', '123', 'Fyke', 'Lleva', 'floterina@gmail.com', '09120912091', 'profile.jpg', 'Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan', 'active')
-    app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=True, host='0.0.0.0')

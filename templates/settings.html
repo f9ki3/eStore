@@ -5,16 +5,16 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3">
+            <div class="col-12 col-md-3 mb-3">
                 <div class=" border rounded p-3">
                     <h5 class="mb-3 fw-bolder">Settings</h5>
-                    <a href="#profile" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-person"></i>Profile</a>
-                    <a href="#privacy" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shield-lock"></i>Privacy</a>
-                    <a href="#store" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cart"></i>Store</a>
-                    <a href="#categories" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shuffle"></i>Categories</a>
-                    <a href="#units" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-option"></i>Units</a>
-                    <a href="#taxes" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-percent"></i>Taxes</a>
-                    <a href="#dicounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-tags"></i>Discounts</a>
+                    <a id="btn_profile" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-person"></i>Profile</a>
+                    <a id="btn_privacy" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shield-lock"></i>Privacy</a>
+                    <a id="btn_store" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cart"></i>Store</a>
+                    <a id="btn_categories" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shuffle"></i>Categories</a>
+                    <a id="btn_units" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-option"></i>Units</a>
+                    <a id="btn_taxes" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-percent"></i>Taxes</a>
+                    <a id="btn_dicounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-tags"></i>Discounts</a>
 
                 </div>
                 <div class=" border rounded p-3 mt-3 text-muted">
@@ -105,7 +105,7 @@
                     
                 </div>
 
-                <div class="border rounded p-3 mb-3" id="privacy">
+                <div class="border rounded p-3 mb-3" id="privacy" style="display: none;">
                     <h5 class="mb-3 fw-bolder">Manage Privacy</h5>
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
@@ -124,7 +124,7 @@
                     </div>
                 </div>
 
-                <div class="border rounded p-3 mb-3" id="store">
+                <div class="border rounded p-3 mb-3" id="store" style="display: none;">
                     <h5 class="mb-3 fw-bolder">Manage Store</h5>
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
@@ -177,8 +177,75 @@
                     </div>
                 </div>
 
-                <div class="border rounded p-3 mb-3 ">
-                    <h5 class="mb-3 fw-bolder">Manage Categories</h5>
+                <div class="border rounded p-3 mb-3 " id="categories" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Categories</h5>
+                        <button class="btn btn-warning btn-sm">Add Category</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Image</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>@johndoe</td>
+                                    <td>john.doe@example.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="border rounded p-3 mb-3 " id="units" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Units</h5>
+                        <button class="btn btn-warning btn-sm">Add Unit</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="border rounded p-3 mb-3 " id="taxes" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Taxes</h5>
+                        <button class="btn btn-warning btn-sm">Add Tax</button>
+                    </div>
                     <table class="table">
                         <thead>
                           <tr>
@@ -210,73 +277,11 @@
                       </table>
                 </div>
 
-                <div class="border rounded p-3 mb-3 ">
-                    <h5 class="mb-3 fw-bolder">Manage Units</h5>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-                <div class="border rounded p-3 mb-3 ">
-                    <h5 class="mb-3 fw-bolder">Manage Discounts</h5>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">First</th>
-                            <th scope="col">Last</th>
-                            <th scope="col">Handle</th>
-                          </tr>
-                        </thead>
-                        <tbody>
-                          <tr>
-                            <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">2</th>
-                            <td>Jacob</td>
-                            <td>Thornton</td>
-                            <td>@fat</td>
-                          </tr>
-                          <tr>
-                            <th scope="row">3</th>
-                            <td colspan="2">Larry the Bird</td>
-                            <td>@twitter</td>
-                          </tr>
-                        </tbody>
-                      </table>
-                </div>
-
-                <div class="border rounded p-3 mb-3 ">
-                    <h5 class="mb-3 fw-bolder">Manage Categories</h5>
+                <div class="border rounded p-3 mb-3 " id="discounts" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Discounts</h5>
+                        <button class="btn btn-warning btn-sm">Add Discount</button>
+                    </div>
                     <table class="table">
                         <thead>
                           <tr>

@@ -1,0 +1,24 @@
+@media (max-width: 800px) {
+    .list{
+        display: none;
+    }
+    .bruger-menu{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        height: 70px;
+    }
+
+    .login-illustartion{
+        display: none;
+    }
+  }
+
+@media (min-width: 800px) {
+    .bruger-menu{
+        display: none;
+    }
+  }
+
+  
+
