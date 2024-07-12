@@ -12,6 +12,7 @@ class Database:
         self.createTableUnit()
         self.createTableDelivery()
         self.createTableSupplier()
+        self.createTableStore()
         self.conn.close()
         
 
@@ -33,11 +34,10 @@ class Database:
             accounts_about TEXT,
             accounts_cover TEXT,
             accounts_type TEXT,
-                       store_logo TEXT,
-                       store_name TEXT,
-                       store_owner TEXT,
-                       store_address TEXT,
-                       store_email
+            accounts_store_id INTEGER,
+            accounts_manager_id INTEGER,
+            FOREIGN KEY (accounts_store_id) REFERENCES store(id),
+            FOREIGN KEY (accounts_manager_id) REFERENCES manager(id)
         )
         ''')
 
@@ -114,16 +114,40 @@ class Database:
         )                
         ''')
 
+    def createTableStore(self):
+        cursor = self.conn.cursor()
+        cursor.execute(''' 
+        CREATE TABLE IF NOT EXISTS store ( 
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            store_logo TEXT,
+            store_name TEXT,
+            store_owner TEXT,
+            store_address TEXT,
+            store_email
+        )                
+        ''')
+
+    def createTableStore(self):
+        cursor = self.conn.cursor()
+        cursor.execute(''' 
+        CREATE TABLE IF NOT EXISTS manager ( 
+            id INTEGER PRIMARY KEY AUTOINCREMENT, 
+            manager_firstname TEXT,
+            manager_lastname TEXT,
+            manager_contact TEXT,
+            manager_email TEXT
+        )                
+        ''')
 
 
 class Accounts():
     #method to add new account
-    def addAccount(self, accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status):
+    def addAccount(self, accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id ):
         conn = Database().conn
-        data = accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status
+        data = accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id 
         conn.cursor().execute('''
-        INSERT INTO accounts (accounts_date_created, accounts_username, accounts_password, accounts_fname, accounts_lname, accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status)
-        VALUES (?,?,?,?,?,?,?,?,?,?)
+        INSERT INTO accounts (accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id )
+        VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         ''', data)
         conn.commit()
         print('Added a new account')
