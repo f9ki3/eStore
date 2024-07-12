@@ -13,6 +13,7 @@ class Database:
         self.createTableDelivery()
         self.createTableSupplier()
         self.conn.close()
+        
 
     def createTableAccount(self):
         cursor = self.conn.cursor()
@@ -28,7 +29,15 @@ class Database:
             accounts_contact TEXT,
             accounts_profile TEXT,
             accounts_address TEXT,
-            accounts_status TEXT
+            accounts_status TEXT,
+            accounts_about TEXT,
+            accounts_cover TEXT,
+            accounts_type TEXT,
+                       store_logo TEXT,
+                       store_name TEXT,
+                       store_owner TEXT,
+                       store_address TEXT,
+                       store_email
         )
         ''')
 
@@ -119,3 +128,17 @@ class Accounts():
         conn.commit()
         print('Added a new account')
         conn.close()
+    
+    def login(self, username, password):
+        data = username, password
+        conn = Database().conn
+        result = conn.cursor().execute('''SELECT id, accounts_username, accounts_password FROM accounts WHERE accounts_username = ? and accounts_password = ?''', data).fetchone()
+        conn.close()
+        return result
+
+    def get_account(self, id):
+        conn = Database().conn
+        result = conn.cursor().execute(f'SELECT * FROM accounts WHERE id = {id}').fetchone()
+        conn.close()
+        return result
+

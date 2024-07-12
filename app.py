@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, session
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from datetime import timedelta
 from model import *
 
@@ -6,6 +6,9 @@ app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
 app.secret_key = "sample_key"
 
+
+
+#THESE ARE ROUTES SECTIONS ONLY ROUTES
 @app.route('/')
 def index():
     return redirect('/login')
@@ -18,14 +21,22 @@ def login():
         if request.method == 'POST':
             username = request.form.get('uname')
             password = request.form.get('pass')
-            if username == 'fyke' and password == '123':
-                session.permanent = True
-                session['users'] = username
-                return redirect('/logging')
-            elif username == '' and password == '' or username == '' or password == '': 
+
+            if username == '' and password == '' or username == '' or password == '': 
                 return render_template('login.html', error=1)
             else:
-                return render_template('login.html', error=2)
+                try: 
+                    id, uname, passw = Accounts().login(username,password)
+                    if username == uname and password == passw:
+                        session.permanent = True
+                        session['users'] = username
+                        session['id'] = id
+                        return redirect('/logging')
+                    else:
+                        return render_template('login.html', error=2)
+                except TypeError:
+                    return render_template('login.html', error=2)
+                
         else:
             return render_template('login.html')
 
@@ -51,5 +62,15 @@ def settings():
     else:
         return redirect('/login')
 
+
+#These are API ENDPOINT SECTION
+#API to get the information of account
+@app.route('/get_account_info')
+def get_account_info():
+    id = session['id']
+    account_info = Accounts().get_account(id)
+    return jsonify(account_info)
+
 if __name__ == '__main__':
+    Database().createTables()
     app.run(debug=True, host='0.0.0.0')
