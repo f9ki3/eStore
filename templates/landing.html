@@ -51,14 +51,23 @@
 
                 <div class="border rounded p-3 mb-3" id="profile" style="display: none">
                     <h5 class="mb-3 fw-bolder">Manage Profile</h5>
-                    <div style="width: 100%; height: 200px" class="border rounded">
-                        <img style="object-fit: cover; width: 100%; height: 100%" class="rounded" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
+                    <div class="d-flex flex-column align-items-end">
+                        <div style="width: 100%; height: 200px" class="border rounded">
+                            <img id="bannerImage" style="object-fit: cover; width: 100%; height: 100%" class="rounded" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">    
+                        </div>
+                        <button id="changecover" class="btn border btn-sm btn-light" style="position: relative; right: 40px; top: -50px">
+                            <i class="bi bi-camera-fill"></i> Edit Banner
+                          </button>
+                          <input type="file" id="fileCover" accept="image/*" style="display: none;">
                     </div>
                     <div class="d-flex flex-row align-items-end justify-content-center" style="margin-top: -100px;">
                         <div style="height: 150px; width: 150px; border-radius: 100%; border: 5px solid white" >
-                            <img style="height: 100%; width: 100%; border-radius: 100%; object-fit: cover" src="{{ url_for('static', filename='/uploads/1704021493451.jpeg') }}" alt="">
+                            <img id="profileImage" style="height: 100%; width: 100%; border-radius: 100%; object-fit: cover" src="{{ url_for('static', filename='/uploads/1704021493451.jpeg') }}" alt="">
                         </div>
+                        <button id="changeprofile" class="btn border btn-sm rounded rounded-5 btn-light" style="position: relative; right: 50px"><i class="bi bi-camera-fill"></i></button>
+                        <input type="file" id="fileProfile" accept="image/*" style="display: none;">
                     </div>
+                   
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
