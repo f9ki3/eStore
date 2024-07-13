@@ -7,7 +7,6 @@ app.permanent_session_lifetime = timedelta(days=5)
 app.secret_key = "sample_key"
 
 
-
 #THESE ARE ROUTES SECTIONS ONLY ROUTES
 @app.route('/')
 def index():
@@ -16,7 +15,7 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if 'users' in session:
-        return redirect('/landing')
+        return redirect('/estore')
     else:
         if request.method == 'POST':
             username = request.form.get('uname')
@@ -44,10 +43,10 @@ def login():
 def loading():
     return render_template('loading.html')
 
-@app.route('/landing')
-def landing():
+@app.route('/estore')
+def estore():
     if 'users' in session:
-        return render_template('landing.html')
+        return render_template('estore.html')
     return redirect('/login')
 
 @app.route('/logout')
@@ -67,9 +66,11 @@ def settings():
 #API to get the information of account
 @app.route('/get_account_info')
 def get_account_info():
-    id = session['id']
-    account_info = Accounts().get_account(id)
-    return jsonify(account_info)
+    if 'users' in session:
+        id = session['id']
+        account_info = Accounts().get_account(id)
+        return jsonify(account_info)
+    return '200'
 
 if __name__ == '__main__':
     Database().createTables()

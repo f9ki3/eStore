@@ -13,6 +13,7 @@ class Database:
         self.createTableDelivery()
         self.createTableSupplier()
         self.createTableStore()
+        self.createTableManager()
         self.conn.close()
         
 
@@ -35,9 +36,7 @@ class Database:
             accounts_cover TEXT,
             accounts_type TEXT,
             accounts_store_id INTEGER,
-            accounts_manager_id INTEGER,
-            FOREIGN KEY (accounts_store_id) REFERENCES store(id),
-            FOREIGN KEY (accounts_manager_id) REFERENCES manager(id)
+            FOREIGN KEY (accounts_store_id) REFERENCES store(id)
         )
         ''')
 
@@ -123,11 +122,13 @@ class Database:
             store_name TEXT,
             store_owner TEXT,
             store_address TEXT,
-            store_email
+            store_email,
+            store_manager_id INTEGER,
+            FOREIGN KEY (store_manager_id) REFERENCES manager(id)
         )                
         ''')
 
-    def createTableStore(self):
+    def createTableManager(self):
         cursor = self.conn.cursor()
         cursor.execute(''' 
         CREATE TABLE IF NOT EXISTS manager ( 
@@ -142,11 +143,11 @@ class Database:
 
 class Accounts():
     #method to add new account
-    def addAccount(self, accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id ):
+    def addAccount(self, accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id ):
         conn = Database().conn
-        data = accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id 
+        data = accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id 
         conn.cursor().execute('''
-        INSERT INTO accounts (accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id, accounts_manager_id )
+        INSERT INTO accounts (accounts_date_created, accounts_username , accounts_password , accounts_fname , accounts_lname , accounts_email, accounts_contact, accounts_profile, accounts_address, accounts_status, accounts_about, accounts_cover, accounts_type, accounts_store_id )
         VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
         ''', data)
         conn.commit()
@@ -165,4 +166,25 @@ class Accounts():
         result = conn.cursor().execute(f'SELECT * FROM accounts WHERE id = {id}').fetchone()
         conn.close()
         return result
+
+class Product():
+    ...
+
+class Categories():
+    ...
+
+class Units():
+    ...
+
+class Delivery():
+    ...
+
+class Supplier():
+    ...
+
+class Store():
+    ...
+
+class Manager():
+    ...
 

@@ -3,10 +3,30 @@ $(document).ready(function() {
     // for settings menu 
     function showSection(section) {
         // Hide all sections
-        $('#profile, #privacy, #store, #categories, #units, #taxes, #discounts #about').hide();
+        $('#profile, #privacy, #store, #categories, #units, #taxes, #discounts, #about, #dashboard, #product, #delivery, #account, #supplier').hide();
         // Show the selected section with fadeIn animation
         $(section).fadeIn();
     }
+
+    $("#btn_dashboard").click(function() {
+        showSection('#dashboard');
+    });
+
+    $("#btn_product").click(function() {
+        showSection('#product');
+    });
+    
+    $("#btn_delivery").click(function() {
+        showSection('#delivery');
+    });
+
+    $("#btn_account").click(function() {
+        showSection('#account');
+    });
+
+    $("#btn_supplier").click(function() {
+        showSection('#supplier');
+    });
 
     $("#btn_profile").click(function() {
         showSection('#profile');
@@ -32,26 +52,8 @@ $(document).ready(function() {
         showSection('#taxes');
     });
 
-    $("#btn_dicounts").click(function() {
+    $("#btn_discounts").click(function() {
         showSection('#discounts');
     });
-
-
-    // for profile menu
-    function showProfile(section) {
-        // Hide all sections
-        $('#about, #fullname').hide();
-        // Show the selected section with fadeIn animation
-        $(section).fadeIn();
-    }
-    
-    $("#btn_edit_about").click(function() {
-        showProfile('#about_data');
-    });
-
-    $("#btn_edit_fullname").click(function() {
-        showProfile('#fullname_data');
-    });
-
 
 });

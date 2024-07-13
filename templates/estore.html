@@ -1,0 +1,379 @@
+{% extends "base.html" %}
+
+{% block title %}Settings{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-3 mb-3">
+                <div class=" border rounded p-3">
+                  <h5 class="mb-3 fw-bolder">Menu</h5>
+                    <a id="btn_dashboard" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-house-door"></i>Dashboard</a>
+                    <a id="btn_product" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-box-seam"></i>Product</a>
+                    <a id="btn_delivery" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-truck"></i>Delivery</a>
+                    <a id="btn_account" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-people"></i>Accounts</a>
+                    <a id="btn_supplier" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cash-stack"></i>Supplier</a>
+                    
+                  <h5 class="mb-3 fw-bolder">Settings</h5>
+                  <a id="btn_profile" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-person"></i>Profile</a>
+                  <a id="btn_privacy" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shield-lock"></i>Privacy</a>
+                  <a id="btn_store" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cart"></i>Store</a>
+                  <a id="btn_categories" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shuffle"></i>Categories</a>
+                  <a id="btn_units" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-option"></i>Units</a>
+                  <a id="btn_taxes" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-percent"></i>Taxes</a>
+                  <a id="btn_discounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-tags"></i>Discounts</a>
+                  <a href="/logout" id="btn_dicounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-power"></i>Logout</a>
+
+              </div>
+                
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="border rounded p-3 mb-3" id="dashboard">
+                    <h5 class="mb-3 fw-bolder">Dashboard</h5>
+                    
+                </div>
+                <div class="border rounded p-3 mb-3" id="product" style="display: none">
+                    <h5 class="mb-3 fw-bolder">Product</h5>
+                    
+                </div>
+                <div class="border rounded p-3 mb-3" id="delivery" style="display: none">
+                    <h5 class="mb-3 fw-bolder">Delivery</h5>
+                    
+                </div>
+                <div class="border rounded p-3 mb-3" id="account" style="display: none">
+                    <h5 class="mb-3 fw-bolder">Accounts</h5>
+                    
+                </div>
+                <div class="border rounded p-3 mb-3" id="supplier" style="display: none">
+                    <h5 class="mb-3 fw-bolder">Supplier</h5>
+                    
+                </div>
+
+                <div class="border rounded p-3 mb-3" id="profile" style="display: none">
+                    <h5 class="mb-3 fw-bolder">Manage Profile</h5>
+                    <div style="width: 100%; height: 200px" class="border rounded">
+                        <img style="object-fit: cover; width: 100%; height: 100%" class="rounded" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
+                    </div>
+                    <div class="d-flex flex-row align-items-end justify-content-center" style="margin-top: -100px;">
+                        <div style="height: 150px; width: 150px; border-radius: 100%; border: 5px solid white" >
+                            <img style="height: 100%; width: 100%; border-radius: 100%; object-fit: cover" src="{{ url_for('static', filename='/uploads/1704021493451.jpeg') }}" alt="">
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">About</label></div>
+                            <div><a class="fw-bolder text-primary text-decoration-none" id="btn_edit_about">Edit</a></div>
+                        </div>
+                        <p id="account_fullname" class="text-muted text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id dolores est aperiam eos nobis, enim exercitationem, quaerat ut repudiandae hic perspiciatis ipsum distinctio corporis maiores ullam possimus fugit tempore sunt.</p>
+                        <div id="about_data" style="display: none;">
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Name</label></div>
+                            <div><a class="fw-bolder text-primary text-decoration-none" id="btn_edit_fullname">Edit</a></div>
+                        </div>
+                        <p class="text-muted" id="account_fullname">Fyke Lleva</p>
+                        <div id="fullname_data" style="display: none;">
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Address</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_address">Edit</a></div>
+                        </div>
+                        <p class="text-muted" id="account_address">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
+                        <div id="address_data" style="display: none;">
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary" >Email</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_email">Edit</a></div>
+                        </div>
+                        <p class="text-muted" id="account_email">floterina@gmail.com</p>
+                        <div id="email_data" style="display: none;">
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Contact</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_contact">Edit</a></div>
+                        </div>
+                        <p class="text-muted" id="account_contact">+639098798767</p>
+                        <div id="contact_data" style="display: none;">
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                <div class="border rounded p-3 mb-3" id="privacy" style="display: none;">
+                    <h5 class="mb-3 fw-bolder">Manage Privacy</h5>
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Username</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Update</a></div>
+                        </div>
+                        <p class="text-muted" id="account_username">f9ki3</p>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Password</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Update</a></div>
+                        </div>
+                        <p class="text-muted" id="account_password">4koSiFyke</p>
+                    </div>
+                </div>
+
+                <div class="border rounded p-3 mb-3" id="store" style="display: none;">
+                    <h5 class="mb-3 fw-bolder">Manage Store</h5>
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Store Logo</label></div>
+                            <div></div>
+                        </div>
+                        <div style="height: 100px; width: 100px" class="rounded">
+                            <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Store Name</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
+                        </div>
+                        <p class="text-muted">Magabait Store</p>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Store Owner</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
+                        </div>
+                        <p class="text-muted">Fyke Lleva</p>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Address</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
+                        </div>
+                        <p class="text-muted">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Email</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
+                        </div>
+                        <p class="text-muted">floterina@gmail.com</p>
+                    </div>
+                    <hr class="text-muted">
+                    <div>
+                        <div class="d-flex flex-row justify-content-between mb-2">
+                            <div><label for="" class="fw-bolder text-primary">Contact</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
+                        </div>
+                        <p class="text-muted">+639098798767</p>
+                    </div>
+                </div>
+
+                <div class="border rounded p-3 mb-3 " id="categories" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Categories</h5>
+                        <button class="btn btn-warning btn-sm">Add Category</button>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Image</th>
+                                    <th>Category Name</th>
+                                    <th>Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>John</td>
+                                    <td>Doe</td>
+                                    <td>@johndoe</td>
+                                    <td>john.doe@example.com</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="border rounded p-3 mb-3 " id="units" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Units</h5>
+                        <button class="btn btn-warning btn-sm">Add Unit</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                <div class="border rounded p-3 mb-3 " id="taxes" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Taxes</h5>
+                        <button class="btn btn-warning btn-sm">Add Tax</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+
+                <div class="border rounded p-3 mb-3 " id="discounts" style="display: none;">
+                    <div class="d-flex flex-row align-items-center justify-content-between">
+                        <h5 class="mb-3 fw-bolder">Manage Discounts</h5>
+                        <button class="btn btn-warning btn-sm">Add Discount</button>
+                    </div>
+                    <table class="table">
+                        <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">First</th>
+                            <th scope="col">Last</th>
+                            <th scope="col">Handle</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+                            <td>@fat</td>
+                          </tr>
+                          <tr>
+                            <th scope="row">3</th>
+                            <td colspan="2">Larry the Bird</td>
+                            <td>@twitter</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+                
+
+                <div class=" border rounded p-3 mt-3 text-muted">
+                    <div class="row">
+                        <div class="col-12 col-md-6">
+                            <h6 class="mb-3 fw-bolder ">Software Specification</h6>
+                            <p style="text-align: justify;">eStore is a comprehensive inventory management and point of sales system designed for retail stores. It allows you to track stock levels in real-time, ensuring that you always have the right products available. </p>
+                        </div>
+                        <div class="col-12 col-md-6">
+                            <h6 class="mb-3 fw-bolder ">Developer</h6>
+                            <p><a href="https://f9ki3.onrender.com/" style="text-decoration: none" >Fyke Lleva</a> is a dedicated software developer specializing in Python and additional expertise in web development using Flask and Django frameworks.</p>
+                        </div>
+                    </div>
+                    <hr class="text-muted">
+                    <h6 class="mb-3 fw-bolder ">Technologies and Libraries</h6>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <div style="height: 100%; width: 20%">
+                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/flask.png') }}" alt="">
+                            </div>
+                            <div style="height: 100%; width: 20%">
+                                <img style="width: 100%; filter: grayscale(100%); opacity: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/python.png') }}" alt="">
+                            </div>
+                            <div style="height: 100%; width: 20%">
+                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/sqlite.png') }}" alt="">
+                            </div>
+                            <div style="height: 100%; width: 20%">
+                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/boostrap.png') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
+                
+                </div>
+                
+            </div>
+        </div>
+    </div>
+{% endblock %}
