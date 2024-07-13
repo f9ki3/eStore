@@ -15,7 +15,7 @@ def index():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if 'users' in session:
-        return redirect('/estore')
+        return redirect('/landing')
     else:
         if request.method == 'POST':
             username = request.form.get('uname')
@@ -43,10 +43,10 @@ def login():
 def loading():
     return render_template('loading.html')
 
-@app.route('/estore')
-def estore():
+@app.route('/app')
+def landing():
     if 'users' in session:
-        return render_template('estore.html')
+        return render_template('landing.html')
     return redirect('/login')
 
 @app.route('/logout')
@@ -60,7 +60,6 @@ def settings():
         return render_template('settings.html')
     else:
         return redirect('/login')
-
 
 #These are API ENDPOINT SECTION
 #API to get the information of account

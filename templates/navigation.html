@@ -3,17 +3,13 @@
         <div class="title">
             <h2 class="fw-bold">eStore</h2>
         </div>
-        <div class="list">
-            <a href="{{ url_for('landing') }}">Home</a>
-            <a href="{{ url_for('landing') }}">Products</a>
-            <a href="{{ url_for('landing') }}">Delivery</a>
-            <a href="{{ url_for('landing') }}">Accounts</a>
-            <a href="{{ url_for('landing') }}">Suppliers</a>
-            <a href="{{ url_for('settings') }}">Settings</a>
-            <a href="{{ url_for('logout') }}">Logout</a>
-        </div>
-        <div class="bruger-menu">
-            <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi fs-5 bi-text-right"></i></button>
+        <div class="d-flex">
+            <div class="list">
+                <button class="btn rounded rounded-5" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#notification" aria-controls="offcanvasRight"><i class="bi fs-5 bi-bell-fill"></i></button>
+            </div>
+            <div class="bruger-menu">
+                <button class="btn" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"><i class="bi fs-5 bi-text-right"></i></button>
+            </div>
         </div>
     </div>
 </nav>
@@ -81,3 +77,14 @@
         </div>
     </div>
   </div>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="notification" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="offcanvasRightLabel">Notification</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+      ...
+    </div>
+</div>

@@ -1,7 +1,4 @@
 @media (max-width: 800px) {
-    .list{
-        display: none;
-    }
     .bruger-menu{
         display: flex;
         flex-direction: row;
