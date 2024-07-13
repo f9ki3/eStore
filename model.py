@@ -166,6 +166,22 @@ class Accounts():
         result = conn.cursor().execute(f'SELECT * FROM accounts WHERE id = {id}').fetchone()
         conn.close()
         return result
+    
+    def updateCover(self, id, cover):
+        data = cover, id
+        conn = Database().conn
+        conn.cursor().execute('UPDATE accounts SET accounts_cover = ? WHERE id = ?', data)
+        conn.commit()
+        conn.close()
+    
+    def updateProfile(self, id, profile):
+        data = profile, id
+        conn = Database().conn
+        conn.cursor().execute('UPDATE accounts SET accounts_profile = ? WHERE id = ?', data)
+        conn.commit()
+        conn.close()
+
+
 
 class Product():
     ...

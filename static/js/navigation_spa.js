@@ -1,13 +1,23 @@
 $(document).ready(function() {
     
-    // for settings menu 
+    // Function to show a specific section and store the last clicked button
     function showSection(section) {
         // Hide all sections
         $('#profile, #privacy, #store, #categories, #units, #taxes, #discounts, #about, #dashboard, #product, #delivery, #account, #supplier').hide();
         // Show the selected section with fadeIn animation
         $(section).fadeIn();
+        
+        // Store the ID of the clicked button in localStorage
+        localStorage.setItem('lastClickedButton', section);
     }
 
+    // Retrieve the last clicked button from localStorage on page load
+    var lastClickedSection = localStorage.getItem('lastClickedButton');
+    if (lastClickedSection) {
+        showSection(lastClickedSection);
+    }
+
+    // Click event handlers for each button
     $("#btn_dashboard").click(function() {
         showSection('#dashboard');
     });

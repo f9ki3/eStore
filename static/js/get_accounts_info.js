@@ -11,6 +11,9 @@ $(document).ready(function() {
             $("#account_contact").text(Data[7]);
             $("#account_username").text(Data[2]);
             $("#account_password").text(Data[3]);
+            $("#account_about").text(Data[11]);
+            $("#bannerImage").attr("src", 'static/uploads/'+Data[12]);
+            $("#profileImage").attr("src", 'static/uploads/'+Data[8]);
         },
         error: function(error) {
             console.log('Error:', error);

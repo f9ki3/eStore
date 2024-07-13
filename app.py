@@ -71,6 +71,40 @@ def get_account_info():
         return jsonify(account_info)
     return '200'
 
+@app.route('/upload-banner', methods=['POST'])
+def updateBanner():
+    if request.method == 'POST':
+        if 'fileCover' in request.files:
+            file = request.files['fileCover']
+            # Handle the file processing here
+            # Example: Save the file to a directory
+            file.save('static/uploads/' + file.filename)
+            id = session['id']
+            cover = file.filename
+            Accounts().updateCover(id, cover)
+            return 'File uploaded successfully'
+        else:
+            return 'No file part in the request', 400
+    else:
+        return 'Method Not Allowed', 405
+
+@app.route('/upload-profile', methods=['POST'])
+def updateProfile():
+    if request.method == 'POST':
+        if 'fileProfile' in request.files:
+            file = request.files['fileProfile']
+            # Handle the file processing here
+            # Example: Save the file to a directory
+            file.save('static/uploads/' + file.filename)
+            id = session['id']
+            cover = file.filename
+            Accounts().updateProfile(id, cover)
+            return 'File uploaded successfully'
+        else:
+            return 'No file part in the request', 400
+    else:
+        return 'Method Not Allowed', 405
+
 if __name__ == '__main__':
     Database().createTables()
     app.run(debug=True, host='0.0.0.0')
