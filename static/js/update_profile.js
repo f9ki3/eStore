@@ -18,6 +18,7 @@ $(document).ready(function() {
                 $('#account_about').text(aboutText); // Update displayed text on success
                 $('#about_data').hide(); // Hide the input and buttons after saving
                 $('#account_about').show(); // Show the paragraph with the updated text
+                showAlert('Update Success', 'warning')
             },
             error: function(xhr, status, error) {
                 // Handle error
