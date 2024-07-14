@@ -50,6 +50,7 @@ $(document).ready(function() {
                   // Optionally handle the response from the server
                   $('#bannerValidation').css('display', 'none');
                   $('#changeprofile').prop('disabled', false);
+                  showAlert('Update Profile Success!', 'warning');
               },
               error: function(jqXHR, textStatus, errorThrown) {
                   console.error('File upload failed:', textStatus, errorThrown);

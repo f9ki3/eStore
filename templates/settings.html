@@ -7,141 +7,125 @@
         <div class="row">
             <div class="col-12 col-md-3 mb-3">
                 <div class=" border rounded p-3">
-                  <h5 class="mb-3 fw-bolder">Menu</h5>
-                    <a id="btn_dashboard" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-house-door"></i>Dashboard</a>
-                    <a id="btn_product" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-box-seam"></i>Product</a>
-                    <a id="btn_delivery" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-truck"></i>Delivery</a>
-                    <a id="btn_account" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-people"></i>Accounts</a>
-                    <a id="btn_supplier" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cash-stack"></i>Supplier</a>
-                    
-                  <h5 class="mb-3 fw-bolder">Settings</h5>
-                  <a id="btn_profile" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-person"></i>Profile</a>
-                  <a id="btn_privacy" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shield-lock"></i>Privacy</a>
-                  <a id="btn_store" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cart"></i>Store</a>
-                  <a id="btn_categories" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shuffle"></i>Categories</a>
-                  <a id="btn_units" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-option"></i>Units</a>
-                  <a id="btn_taxes" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-percent"></i>Taxes</a>
-                  <a id="btn_discounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-tags"></i>Discounts</a>
-                  <a href="/logout" id="btn_dicounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-power"></i>Logout</a>
+                    <h5 class="mb-3 fw-bolder">Settings</h5>
+                    <a id="btn_profile" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-person"></i>Profile</a>
+                    <a id="btn_privacy" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shield-lock"></i>Privacy</a>
+                    <a id="btn_store" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-cart"></i>Store</a>
+                    <a id="btn_categories" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-shuffle"></i>Categories</a>
+                    <a id="btn_units" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-option"></i>Units</a>
+                    <a id="btn_taxes" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-percent"></i>Taxes</a>
+                    <a id="btn_dicounts" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-tags"></i>Discounts</a>
 
-              </div>
+                </div>
+                <div class=" border rounded p-3 mt-3 text-muted">
+                    <h6 class="mb-3 fw-bolder ">Software Specification</h6>
+                    <p style="text-align: justify;">eStore is a comprehensive inventory management and point of sales system designed for retail stores. It allows you to track stock levels in real-time, ensuring that you always have the right products available. </p>
+                    <hr class="text-muted">
+                    <h6 class="mb-3 fw-bolder ">Developer</h6>
+                    <p><a href="https://f9ki3.onrender.com/">Fyke Lleva</a> is a dedicated software developer specializing in Python and additional expertise in web development using Flask and Django frameworks.</p>
+                    <p></p>
+                    <hr class="text-muted">
+                    <h6 class="mb-3 fw-bolder ">Technologies and Libraries</h6>
+                    <div class="d-flex flex-column justify-content-center align-items-center">
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <div style="height: 100%; width: 45%">
+                                <img style="width: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/flask.png') }}" alt="">
+                            </div>
+                            <div style="height: 100%; width: 45%">
+                                <img style="width: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/python.png') }}" alt="">
+                            </div>
+                        </div>
+                        <div class="d-flex flex-row justify-content-between align-items-center">
+                            <div style="height: 100%; width: 45%">
+                                <img style="width: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/sqlite.png') }}" alt="">
+                            </div>
+                            <div style="height: 100%; width: 45%">
+                                <img style="width: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/boostrap.png') }}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+
                 
             </div>
             <div class="col-12 col-md-9">
-                <div class="border rounded p-3 mb-3" id="dashboard" style="display: none">
-                    <h5 class="mb-3 fw-bolder">Dashboard</h5>
-                    
-                </div>
-                <div class="border rounded p-3 mb-3" id="product" style="display: none">
-                    <h5 class="mb-3 fw-bolder">Product</h5>
-                    
-                </div>
-                <div class="border rounded p-3 mb-3" id="delivery" style="display: none">
-                    <h5 class="mb-3 fw-bolder">Delivery</h5>
-                    
-                </div>
-                <div class="border rounded p-3 mb-3" id="account" style="display: none">
-                    <h5 class="mb-3 fw-bolder">Accounts</h5>
-                    
-                </div>
-                <div class="border rounded p-3 mb-3" id="supplier" style="display: none">
-                    <h5 class="mb-3 fw-bolder">Supplier</h5>
-                    
-                </div>
-
-                <div class="border rounded p-3 mb-3" id="profile" style="display: none">
+                <div class="border rounded p-3 mb-3" id="profile">
                     <h5 class="mb-3 fw-bolder">Manage Profile</h5>
-                    <div class="d-flex flex-column align-items-end">
-                        <div style="width: 100%; height: 200px" class="border rounded">
-                            <img id="bannerImage" style="object-fit: cover; width: 100%; height: 100%" class="rounded" alt="">    
-                        </div>
-                        <button id="changecover" class="btn border btn-sm btn-light" style="position: relative; right: 40px; top: -50px">
-                            <i class="bi bi-camera-fill"></i> Edit Banner
-                          </button>
-                          <input type="file" id="fileCover" accept="image/*" style="display: none;">
+                    <div style="width: 100%; height: 200px" class="border rounded">
+                        <img style="object-fit: cover; width: 100%; height: 100%" class="rounded" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
                     </div>
                     <div class="d-flex flex-row align-items-end justify-content-center" style="margin-top: -100px;">
                         <div style="height: 150px; width: 150px; border-radius: 100%; border: 5px solid white" >
-                            <img id="profileImage" style="height: 100%; width: 100%; border-radius: 100%; object-fit: cover" alt="">
+                            <img style="height: 100%; width: 100%; border-radius: 100%; object-fit: cover" src="{{ url_for('static', filename='/uploads/1704021493451.jpeg') }}" alt="">
                         </div>
-                        <button id="changeprofile" class="btn border btn-sm rounded rounded-5 btn-light" style="position: relative; right: 50px"><i class="bi bi-camera-fill"></i></button>
-                        <input type="file" id="fileProfile" accept="image/*" style="display: none;">
                     </div>
-                    <div id="bannerValidation" style="display: none;" class=" flex-row justify-content-end">
-                        <button id="saveCover" class="btn border me-2 btn-sm">Save</button>
-                        <button id="cancelBanner" class="btn border btn-sm">Cancel</button>
-                    </div>
-                    <div id="profileValidation" style="display: none;" class=" flex-row justify-content-end">
-                        <button id="saveProfile" class="btn border me-2 btn-sm">Save</button>
-                        <button id="cancelProfile" class="btn border btn-sm">Cancel</button>
-                    </div>
-                   
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">About</label></div>
-                            <div><a class="fw-bolder text-decoration-none btn btn-sm" id="btn_edit_about"><i class="bi bi-pencil"></i></a></div>
+                            <div><label for="" class="fw-bolder text-primary">About</label></div>
+                            <div><a class="fw-bolder text-primary text-decoration-none" id="btn_edit_about">Edit</a></div>
                         </div>
-                        <p id="account_about" class="text-muted text-justify"></p>
+                        <p id="account_fullname" class="text-muted text-justify">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Id dolores est aperiam eos nobis, enim exercitationem, quaerat ut repudiandae hic perspiciatis ipsum distinctio corporis maiores ullam possimus fugit tempore sunt.</p>
                         <div id="about_data" style="display: none;">
-                            <input id="account_about_input" type="text" class="form-control">
-                            <button class="btn btn-light mt-2 border" id="save_about">Save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_about">Cancel</button>
+                            <input type="text" value="lorem ipsum" class="form-control">
+                            <button class="btn btn-light mt-2 border">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
                         </div>
-
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Name</label></div>
-                            <div><a class="fw-bolder text-decoration-none btn btn-sm" id="btn_edit_fullname"><i class="bi bi-pencil"></i></a></div>
+                            <div><label for="" class="fw-bolder text-primary">Name</label></div>
+                            <div><a class="fw-bolder text-primary text-decoration-none" id="btn_edit_fullname">Edit</a></div>
                         </div>
                         <p class="text-muted" id="account_fullname">Fyke Lleva</p>
                         <div id="fullname_data" style="display: none;">
-                            <input id="account_fullname_input" type="text" class="form-control">
+                            <input type="text" value="lorem ipsum" class="form-control">
                             <button class="btn btn-light mt-2 border">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_fullname">cancel</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
                         </div>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Address</label></div>
-                            <div><a class="fw-bolder text-decoration-none btn btn-sm" id="btn_edit_address"><i class="bi bi-pencil"></i></a></div>
+                            <div><label for="" class="fw-bolder text-primary">Address</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_address">Edit</a></div>
                         </div>
                         <p class="text-muted" id="account_address">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
                         <div id="address_data" style="display: none;">
-                            <input id="account_address_input" type="text" class="form-control">
+                            <input type="text" value="lorem ipsum" class="form-control">
                             <button class="btn btn-light mt-2 border">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_address">cancel</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
                         </div>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Email</label></div>
-                            <div><a class="fw-bolder text-decoration-none btn btn-sm" id="btn_edit_email"><i class="bi bi-pencil"></i></a></div>
+                            <div><label for="" class="fw-bolder text-primary" >Email</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_email">Edit</a></div>
                         </div>
                         <p class="text-muted" id="account_email">floterina@gmail.com</p>
                         <div id="email_data" style="display: none;">
-                            <input id="account_email_input" type="text" class="form-control">
+                            <input type="text" value="lorem ipsum" class="form-control">
                             <button class="btn btn-light mt-2 border">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_email">cancel</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
                         </div>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Contact</label></div>
-                            <div><a class="fw-bolder text-decoration-none btn btn-sm" id="btn_edit_contact"><i class="bi bi-pencil"></i></a></div>
+                            <div><label for="" class="fw-bolder text-primary">Contact</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none" id="btn_edit_contact">Edit</a></div>
                         </div>
                         <p class="text-muted" id="account_contact">+639098798767</p>
                         <div id="contact_data" style="display: none;">
-                            <input id="account_contact_input" type="text" class="form-control">
+                            <input type="text" value="lorem ipsum" class="form-control">
                             <button class="btn btn-light mt-2 border">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_contact">cancel</button>
+                            <button class="btn btn-light mt-2 border" id="cancel">cancel</button>
                         </div>
-                    </div>                    
+                    </div>
                     
                     
                 </div>
@@ -150,16 +134,16 @@
                     <h5 class="mb-3 fw-bolder">Manage Privacy</h5>
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Username</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Update</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Username</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Update</a></div>
                         </div>
                         <p class="text-muted" id="account_username">f9ki3</p>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Password</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Update</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Password</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Update</a></div>
                         </div>
                         <p class="text-muted" id="account_password">4koSiFyke</p>
                     </div>
@@ -169,7 +153,7 @@
                     <h5 class="mb-3 fw-bolder">Manage Store</h5>
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
+                            <div><label for="" class="fw-bolder text-primary">Store Logo</label></div>
                             <div></div>
                         </div>
                         <div style="height: 100px; width: 100px" class="rounded">
@@ -179,40 +163,40 @@
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Store Name</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
                         </div>
                         <p class="text-muted">Magabait Store</p>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Store Owner</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
                         </div>
                         <p class="text-muted">Fyke Lleva</p>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Address</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Address</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
                         </div>
                         <p class="text-muted">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Email</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Email</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
                         </div>
                         <p class="text-muted">floterina@gmail.com</p>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Contact</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            <div><label for="" class="fw-bolder text-primary">Contact</label></div>
+                            <div><a href="" class="fw-bolder text-primary text-decoration-none">Edit</a></div>
                         </div>
                         <p class="text-muted">+639098798767</p>
                     </div>
@@ -353,42 +337,11 @@
                         </tbody>
                       </table>
                 </div>
-                
-
-                <div class=" border rounded p-3 mt-3 text-muted">
-                    <div class="row">
-                        <div class="col-12 col-md-6">
-                            <h6 class="mb-3 fw-bolder ">Software Specification</h6>
-                            <p style="text-align: justify;">eStore is a comprehensive inventory management and point of sales system designed for retail stores. It allows you to track stock levels in real-time, ensuring that you always have the right products available. </p>
-                        </div>
-                        <div class="col-12 col-md-6">
-                            <h6 class="mb-3 fw-bolder ">Developer</h6>
-                            <p><a href="https://f9ki3.onrender.com/" style="text-decoration: none" >Fyke Lleva</a> is a dedicated software developer specializing in Python and additional expertise in web development using Flask and Django frameworks.</p>
-                        </div>
-                    </div>
-                    <hr class="text-muted">
-                    <h6 class="mb-3 fw-bolder ">Technologies and Libraries</h6>
-                    <div class="d-flex flex-column justify-content-center align-items-center">
-                        <div class="d-flex flex-row justify-content-between align-items-center">
-                            <div style="height: 100%; width: 20%">
-                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/flask.png') }}" alt="">
-                            </div>
-                            <div style="height: 100%; width: 20%">
-                                <img style="width: 100%; filter: grayscale(100%); opacity: 100%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/python.png') }}" alt="">
-                            </div>
-                            <div style="height: 100%; width: 20%">
-                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/sqlite.png') }}" alt="">
-                            </div>
-                            <div style="height: 100%; width: 20%">
-                                <img style="width: 100%; filter: grayscale(100%); opacity: 70%; height: 100%; object-fit: fill" src="{{ url_for('static', filename='/img/boostrap.png') }}" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    
-                    
+                <!-- <div class="border rounded p-3 mb-3">
+                    <h5 class="mb-3 fw-bolder">Manage Taxes</h5>
                 </div>
-
-                
+                <div class="border rounded p-3 mb-3">
+                    <h5 class="mb-3 fw-bolder">Manage Discounts</h5> -->
                 </div>
                 
             </div>

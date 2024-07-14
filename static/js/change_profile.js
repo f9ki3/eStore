@@ -1,3 +1,5 @@
+
+
 $(document).ready(function() {
   var originalImageSrc = $('#profileImage').attr('src');
 
@@ -50,6 +52,7 @@ $(document).ready(function() {
                   // Optionally handle the response from the server
                   $('#profileValidation').css('display', 'none');
                   $('#changecover').removeAttr('disabled');
+                  showAlert('Update Profile Success!', 'warning');
               },
               error: function(jqXHR, textStatus, errorThrown) {
                   console.error('File upload failed:', textStatus, errorThrown);
