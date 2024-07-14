@@ -180,6 +180,13 @@ class Accounts():
         conn.cursor().execute('UPDATE accounts SET accounts_profile = ? WHERE id = ?', data)
         conn.commit()
         conn.close()
+    
+    def updateProfileInfo(self, id, about, firstname, lastname, address, email, contact):
+        data = about, firstname, lastname, address, email, contact, id
+        conn = Database().conn
+        conn.cursor().execute('UPDATE accounts SET accounts_about = ?, accounts_fname = ?, accounts_lname = ?, accounts_address = ?, accounts_email = ?, accounts_contact = ? WHERE id = ?', data)
+        conn.commit()
+        conn.close()
 
 
 

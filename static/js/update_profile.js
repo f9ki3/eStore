@@ -1,7 +1,9 @@
 $(document).ready(function() {
-    $('#save_profile_all').click(function() {
+    $('#save_profile, #save_fullname, #save_address, #save_email, #save_contact').click(function() {
+        // console.log('click!')
         var aboutText = $('#account_about_input').val();
-        var fullnameText = $('#account_fullname_input').val();
+        var firstnameText = $('#account_firstname_input').val();
+        var lastnameText = $('#account_lastname_input').val();
         var addressText = $('#account_address_input').val();
         var emailText = $('#account_email_input').val();
         var contactText = $('#account_contact_input').val();
@@ -9,7 +11,8 @@ $(document).ready(function() {
         // Create FormData object
         var formData = new FormData();
         formData.append('about', aboutText);
-        formData.append('fullname', fullnameText);
+        formData.append('firstname', firstnameText);
+        formData.append('lastname', lastnameText);
         formData.append('address', addressText);
         formData.append('email', emailText);
         formData.append('contact', contactText);
@@ -27,7 +30,7 @@ $(document).ready(function() {
                 $('#about_data').hide(); // Hide the input and buttons after saving
                 $('#account_about').show(); // Show the paragraph with the updated text
 
-                $('#account_fullname').text(fullnameText); // Update fullname field
+                $('#account_fullname').text(firstnameText + ' ' + lastnameText); // Update fullname field
                 $('#fullname_data').hide(); // Hide the input and buttons after saving
                 $('#account_fullname').show(); // Show the paragraph with the updated text
 
@@ -43,7 +46,8 @@ $(document).ready(function() {
                 $('#contact_data').hide(); // Hide the input and buttons after saving
                 $('#account_contact').show(); // Show the paragraph with the updated text
 
-                showAlert('Update Success', 'warning'); // Show alert for success
+                showAlert('Updated Success', 'warning'); // Show alert for success
+                console.log(response)
             },
             error: function(xhr, status, error) {
                 // Handle error
@@ -52,3 +56,6 @@ $(document).ready(function() {
         });
     });
 });
+
+
+

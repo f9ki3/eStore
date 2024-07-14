@@ -113,11 +113,12 @@ def update_about():
         if 'id' in session:
             id = session['id']
             about = request.form.get('about')  # Retrieve 'about' from form data
-            fullname = request.form.get('fullname')  # Retrieve 'fullname' from form data
+            firstname = request.form.get('firstname')  
+            lastname = request.form.get('lastname') 
             address = request.form.get('address')  # Retrieve 'address' from form data
             email = request.form.get('email')  # Retrieve 'email' from form data
             contact = request.form.get('contact')  # Retrieve 'contact' from form data
-
+            Accounts().updateProfileInfo(id, about, firstname, lastname, address, email, contact)
             return 'Profile updated successfully'
         else:
             return 'Unauthorized', 401  # Handle case where session['id'] is not set

@@ -6,7 +6,8 @@ $(document).ready(function() {
             // Assuming the response is a tuple converted to JSON
             var Data = response;
             $("#account_fullname").text(Data[4] + ' ' + Data[5] );
-            $("#account_fullname_input").val(Data[4] + ' ' + Data[5] );
+            $("#account_firstname_input").val(Data[4]);
+            $("#account_lastname_input").val(Data[5] );
             $("#account_address_input").val(Data[9]);
             $("#account_address").text(Data[9]);
             $("#account_email").text(Data[6]);
