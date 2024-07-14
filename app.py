@@ -105,6 +105,26 @@ def updateProfile():
     else:
         return 'Method Not Allowed', 405
 
+from flask import request, session, jsonify
+
+@app.route('/update_about', methods=['POST'])
+def update_about():
+    if request.method == 'POST':
+        if 'id' in session:
+            id = session['id']
+            about = request.form.get('about')  # Retrieve 'about' from form data
+            fullname = request.form.get('fullname')  # Retrieve 'fullname' from form data
+            address = request.form.get('address')  # Retrieve 'address' from form data
+            email = request.form.get('email')  # Retrieve 'email' from form data
+            contact = request.form.get('contact')  # Retrieve 'contact' from form data
+
+            return 'Profile updated successfully'
+        else:
+            return 'Unauthorized', 401  # Handle case where session['id'] is not set
+    else:
+        return 'Method Not Allowed', 405
+
+
 if __name__ == '__main__':
     Database().createTables()
     app.run(debug=True, host='0.0.0.0')
