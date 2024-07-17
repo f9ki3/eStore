@@ -159,8 +159,8 @@
                         <p class="text-muted" id="account_username">f9ki3</p>
                         <div id="username_data" style="display: none;">
                             <input id="account_username_input" type="text" class="form-control">
-                            <button class="btn btn-light mt-2 border" id="save_contact">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_contact">cancel</button>
+                            <button class="btn btn-light mt-2 border" id="save_username">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel_username">cancel</button>
                         </div>
                     </div>
                     <hr class="text-muted">
@@ -169,11 +169,15 @@
                             <div><label for="" class="fw-bolder text-muted">Password</label></div>
                             <div><button class="btn btn-sm border" id="btn_edit_password">Change Password</button></div>
                         </div>
-                        <input type="text" id="account_password" style="border: none;" disabled>
+                        <input type="text" id="account_password" style="border: none; background-color: transparent" disabled>
                         <div id="password_data" style="display: none;">
-                            <input id="account_password_input" type="text" class="form-control">
-                            <button class="btn btn-light mt-2 border" id="save_contact">save</button>
-                            <button class="btn btn-light mt-2 border" id="cancel_contact">cancel</button>
+                            <div class="input-group">
+                                <input id="account_password_input" type="password" class="form-control" placeholder="Enter new password" aria-label="Recipient's username" aria-describedby="button-addon2">
+                                <button id="show_password" class="btn btn-outline-secondary text-dark border-muted border" type="button" id="button-addon2">Show Password</button>
+                            </div>                            
+                            <button class="btn btn-light mt-2 border" id="generate_password">Generate Password</button>
+                            <button class="btn btn-light mt-2 border" id="save_password" disabled>Save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel_password">cancel</button>
                         </div>
                     </div>
                 </div>
