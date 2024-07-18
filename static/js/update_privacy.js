@@ -5,12 +5,13 @@ $(document).ready(function() {
     });
 
     $('#cancel_password').on('click', function() {
-        $('#password_data').hide()
-        $('#account_password').show()
-        $('#account_password_input').val('')
+        let old_password = $('#account_password_input').val(); // Get the current value from the input field
+        $('#password_data').hide();
+        $('#account_password').show();
+        $('#account_password_input').val(old_password);
         $('#account_password_input').removeClass('is-invalid border-warning is-valid');
-
     });
+    
 
     $('#show_password').on('click', function() {
         var passwordInput = $('#account_password_input');
@@ -77,20 +78,22 @@ $(document).ready(function() {
     
         // Enable/disable the "Save" button based on password strength
         var saveButton = $('#save_password');
-        saveButton.prop('disabled', strength < 3); // Enable button if strength is 3 or higher
+        saveButton.prop('disabled', strength < 1); // Enable button if strength is 3 or higher
     }
     
 
     $('#btn_edit_username').on('click', function() {
         // console.log('click username')
-        $('#username_data').show();
-        $('#account_username').hide();
+        $('#password_data, #account_username').hide();
+        $('#account_password, #username_data').show();
     });
 
     $('#btn_edit_password').on('click', function() {
         // console.log('click password')
-        $('#password_data').show();
-        $('#account_password').hide();
+        $('#password_data, #account_username').show();
+        $('#account_password, #username_data').hide();
+
     });
+    
     
 });

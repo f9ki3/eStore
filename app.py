@@ -125,6 +125,20 @@ def update_about():
     else:
         return 'Method Not Allowed', 405
 
+@app.route('/update_privacy', methods=['POST'])
+def update_privacy():
+    if request.method == 'POST':
+        if 'id' in session:
+            id = session['id']
+            username = request.form.get('username')  # Retrieve 'about' from form data
+            password = request.form.get('password')  
+            Accounts().updatePrivacy(id, username, password)
+            return 'Privacy updated successfully'
+        else:
+            return 'Unauthorized', 401  # Handle case where session['id'] is not set
+    else:
+        return 'Method Not Allowed', 405
+
 
 if __name__ == '__main__':
     Database().createTables()
