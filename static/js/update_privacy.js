@@ -77,20 +77,21 @@ $(document).ready(function() {
     
         // Enable/disable the "Save" button based on password strength
         var saveButton = $('#save_password');
-        saveButton.prop('disabled', strength < 3); // Enable button if strength is 3 or higher
+        saveButton.prop('disabled', strength < 1); // Enable button if strength is 3 or higher
     }
     
 
     $('#btn_edit_username').on('click', function() {
         // console.log('click username')
-        $('#username_data').show();
-        $('#account_username').hide();
+        $('#password_data, #account_username').hide();
+        $('#account_password, #username_data').show();
     });
 
     $('#btn_edit_password').on('click', function() {
         // console.log('click password')
-        $('#password_data').show();
-        $('#account_password').hide();
+        $('#password_data, #account_username').show();
+        $('#account_password, #username_data').hide();
+
     });
     
 });
