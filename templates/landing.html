@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% block title %}Settings{% endblock %}
+{% block title %}eStore{% endblock %}
 
 {% block content %}
     <div class="container">
@@ -154,17 +154,27 @@
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
                             <div><label for="" class="fw-bolder text-muted">Username</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Update</a></div>
+                            <div><button class="btn btn-sm border" id="btn_edit_username">Change Username</button></div>
                         </div>
                         <p class="text-muted" id="account_username">f9ki3</p>
+                        <div id="username_data" style="display: none;">
+                            <input id="account_username_input" type="text" class="form-control">
+                            <button class="btn btn-light mt-2 border" id="save_contact">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel_contact">cancel</button>
+                        </div>
                     </div>
                     <hr class="text-muted">
                     <div>
                         <div class="d-flex flex-row justify-content-between mb-2">
                             <div><label for="" class="fw-bolder text-muted">Password</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Update</a></div>
+                            <div><button class="btn btn-sm border" id="btn_edit_password">Change Password</button></div>
                         </div>
-                        <p class="text-muted" id="account_password">4koSiFyke</p>
+                        <input type="text" id="account_password" style="border: none;" disabled>
+                        <div id="password_data" style="display: none;">
+                            <input id="account_password_input" type="text" class="form-control">
+                            <button class="btn btn-light mt-2 border" id="save_contact">save</button>
+                            <button class="btn btn-light mt-2 border" id="cancel_contact">cancel</button>
+                        </div>
                     </div>
                 </div>
 

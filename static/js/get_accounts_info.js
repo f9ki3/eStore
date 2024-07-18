@@ -15,11 +15,13 @@ $(document).ready(function() {
             $("#account_contact").text(Data[7]);
             $("#account_contact_input").val(Data[7]);
             $("#account_username").text(Data[2]);
-            $("#account_password").text(Data[3]);
             $("#account_about").text(Data[11]);
             $("#account_about_input").val(Data[11]);
             $("#bannerImage").attr("src", 'static/uploads/'+Data[12]);
             $("#profileImage").attr("src", 'static/uploads/'+Data[8]);
+            $("#account_username_input").val(Data[2]);
+            $("#account_password").attr('type','password').val(Data[3]);
+            $("#account_password_input").attr('type','password').val(Data[3]);
         },
         error: function(error) {
             console.log('Error:', error);
