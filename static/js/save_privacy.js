@@ -6,7 +6,7 @@ $(document).ready(function(){
 
         var formData = new FormData();
         formData.append('username', usernameText);
-        formData.append('pasword', passwordText);
+        formData.append('password', passwordText);
 
         // Ajax request
         $.ajax({
@@ -17,9 +17,10 @@ $(document).ready(function(){
             contentType: false,  // Important: let jQuery set the content type
             success: function(response) {
                 // Handle success response
-                $('#account_username').text(aboutText); // Update about field
-                $('#username_data').hide(); // Hide the input and buttons after saving
-                $('#account_username').show(); // Show the paragraph with the updated text
+                $('#account_username').text(usernameText); // Update about field
+                $('#account_password').text(passwordText); // Update about field
+                $('#password_data, #username_data').hide(); // Hide the input and buttons after saving
+                $('#account_password, #account_username').show(); // Show the paragraph with the updated text
 
                 showAlert('Updated Success', 'warning'); // Show alert for success
                 console.log(response)

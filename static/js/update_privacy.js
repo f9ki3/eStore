@@ -5,12 +5,13 @@ $(document).ready(function() {
     });
 
     $('#cancel_password').on('click', function() {
-        $('#password_data').hide()
-        $('#account_password').show()
-        $('#account_password_input').val('')
+        let old_password = $('#account_password_input').val(); // Get the current value from the input field
+        $('#password_data').hide();
+        $('#account_password').show();
+        $('#account_password_input').val(old_password);
         $('#account_password_input').removeClass('is-invalid border-warning is-valid');
-
     });
+    
 
     $('#show_password').on('click', function() {
         var passwordInput = $('#account_password_input');

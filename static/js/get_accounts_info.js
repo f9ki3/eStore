@@ -21,6 +21,7 @@ $(document).ready(function() {
             $("#profileImage").attr("src", 'static/uploads/'+Data[8]);
             $("#account_username_input").val(Data[2]);
             $("#account_password").attr('type','password').val(Data[3]);
+            $("#account_password_input").val(Data[3]);
 
         },
         error: function(error) {
