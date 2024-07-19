@@ -1,4 +1,8 @@
-/* .base-body{
-    background-color: aliceblue;
-} */
-
+.pagination {
+    margin: 20px 0;
+    text-align: center;
+}
+.pagination button {
+    margin: 0 2px;
+    padding: 5px 10px;
+}
