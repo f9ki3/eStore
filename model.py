@@ -253,6 +253,19 @@ class Store:
         finally:
             conn.close()
 
+    def getStoreInfo(self):
+        conn = Database().conn
+        data = conn.cursor().execute('SELECT * FROM store').fetchall()
+        conn.close()
+        # Define the keys for the dictionaries
+        keys = ['id', 'image', 'store_name', 'owner_name', 'address', 'email', 'manager_id']
+        # Convert list of tuples to list of dictionaries
+        data_dicts = [dict(zip(keys, item)) for item in data]
+        jsonData = []
+        # Print the result
+        for entry in data_dicts:
+            jsonData.append(entry)
+        return jsonData
 
 
 class Manager():
