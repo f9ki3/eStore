@@ -168,6 +168,14 @@ def insert_Store():
         return 'Method Not Allowed', 405
 
 
+@app.route('/get_store', methods=['GET'])
+def get_store():
+    if request.method == 'GET':
+        data = Store().getStoreInfo()
+        return jsonify(data)
+    else:
+        return 'Method Not Allowed', 405
+
 if __name__ == '__main__':
     Database().createTables()
     app.run(debug=True, host='0.0.0.0')

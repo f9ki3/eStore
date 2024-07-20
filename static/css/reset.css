@@ -4,5 +4,8 @@
 }
 .pagination button {
     margin: 0 2px;
+    border: none;
     padding: 5px 10px;
 }
+
+  
