@@ -4,7 +4,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h1 class="modal-title fs-5 fw-bolder" id="staticBackdropLabel">Create Store</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button id="closeCreateStore" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
             <div class="row g-2">
@@ -20,7 +20,7 @@
                 </div>
                 <div class="col-6 col-md-6">
                     <p class="m-0">Store Owner</p>
-                    <input type="text" class="form-control form-control-sm" placeholder="Enter store owner name">
+                    <input id="storeOwner" type="text" class="form-control form-control-sm" placeholder="Enter store owner name">
                 </div>
                 <div class="col-6 col-md-6">
                     <p class="m-0">Store E-mail</p>
@@ -68,7 +68,7 @@
             </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn border-danger text-danger" data-bs-dismiss="modal">Close</button>
+          <button id="cancelCreateStore" type="button" class="btn border-danger text-danger" data-bs-dismiss="modal">Close</button>
           <button type="button" class="btn btn-warning" id="saveStore">Save</button>
         </div>
       </div>

@@ -1,5 +1,5 @@
     // Initialize the state variable
-    var state = 0; // 0 for 'createManager', 1 for 'selectManager'
+    var state = 1; // 0 for 'createManager', 1 for 'selectManager'
 
 $(document).ready(function() {
 
@@ -23,42 +23,107 @@ $(document).ready(function() {
         state = 0;
     });
 
+    $('#closeCreateStore, #cancelCreateStore').click(function() {
+        $('#storeImage').val('').removeClass('is-valid is-invalid');
+        $('#storeName').val('').removeClass('is-valid is-invalid');
+        $('#storeOwner').val('').removeClass('is-valid is-invalid');
+        $('#storeEmail').val('').removeClass('is-valid is-invalid');
+        $('#storeAddress').val('').removeClass('is-valid is-invalid');
+        $('#managerFirstname').val('').removeClass('is-valid is-invalid');
+        $('#managerLastname').val('').removeClass('is-valid is-invalid');
+        $('#managerContact').val('').removeClass('is-valid is-invalid');
+        $('#managerEmail').val('').removeClass('is-valid is-invalid');
+    });
+    
+
     // You can use the 'state' variable as needed here
     $('#saveStore').click(function() {
         if (state == 0) {
-            // Create a FormData object
-            var formData = new FormData();
-    
-            // Append values of the input fields to the FormData object
-            formData.append('storeImage', $('#storeImage').prop('files')[0]); // Assuming file input for image
-            formData.append('storeName', $('#storeName').val());
-            formData.append('storeEmail', $('#storeEmail').val());
-            formData.append('storeAddress', $('#storeAddress').val());
-            formData.append('managerFirstname', $('#managerFirstname').val());
-            formData.append('managerLastname', $('#managerLastname').val());
-            formData.append('managerContact', $('#managerContact').val());
-            formData.append('managerEmail', $('#managerEmail').val());
-    
-            // Send the FormData object using jQuery AJAX
-            $.ajax({
-                url: 'insert_store', // Replace with your server endpoint
-                type: 'POST',
-                data: formData,
-                processData: false, // Important for FormData
-                contentType: false, // Important for FormData
-                success: function(response) {
-                    console.log('Form submitted successfully:', response);
-                },
-                error: function(xhr, status, error) {
-                    console.error('Form submission failed:', error);
+            // Get values of the input fields
+            var storeImage = $('#storeImage')[0].files[0];  // Get the file from the input
+            var storeName = $('#storeName').val();
+            var storeOwner = $('#storeOwner').val();
+            var storeEmail = $('#storeEmail').val();
+            var storeAddress = $('#storeAddress').val();
+            var managerFirstname = $('#managerFirstname').val();
+            var managerLastname = $('#managerLastname').val();
+            var managerContact = $('#managerContact').val();
+            var managerEmail = $('#managerEmail').val();
+        
+            // Define regex patterns for email and 11-digit number
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var numberPattern = /^\d{11}$/;
+        
+            // Validate inputs
+            function validateInput(selector, value, pattern = null) {
+                if (!value || (pattern && !pattern.test(value))) {
+                    $(selector).removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $(selector).removeClass('is-invalid').addClass('is-valid');
                 }
-            });
+            }
+        
+            validateInput('#storeImage', storeImage ? 'file selected' : '');
+            validateInput('#storeName', storeName);
+            validateInput('#storeOwner', storeOwner);
+            validateInput('#storeEmail', storeEmail, emailPattern);
+            validateInput('#storeAddress', storeAddress);
+            validateInput('#managerFirstname', managerFirstname);
+            validateInput('#managerLastname', managerLastname);
+            validateInput('#managerContact', managerContact, numberPattern);
+            validateInput('#managerEmail', managerEmail, emailPattern);
+            
+            // Check if all inputs are valid
+            if ($('.is-invalid').length === 0) {
+                // Create a FormData object and append input values
+                var formData = new FormData();
+                formData.append('storeImage', storeImage);
+                formData.append('storeName', storeName);
+                formData.append('storeOwner', storeOwner);
+                formData.append('storeEmail', storeEmail);
+                formData.append('storeAddress', storeAddress);
+                formData.append('managerFirstname', managerFirstname);
+                formData.append('managerLastname', managerLastname);
+                formData.append('managerContact', managerContact);
+                formData.append('managerEmail', managerEmail);
+        
+                // Send the data using Ajax
+                $.ajax({
+                    url: 'insert_store',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Handle the response from the server
+                        showAlert(response, 'warning');
+                        // Clear the values and remove the 'is-valid' class from the specified elements
+                        $('#storeImage').val('').removeClass('is-valid');
+                        $('#storeName').val('').removeClass('is-valid');
+                        $('#storeOwner').val('').removeClass('is-valid');
+                        $('#storeEmail').val('').removeClass('is-valid');
+                        $('#storeAddress').val('').removeClass('is-valid');
+                        $('#managerFirstname').val('').removeClass('is-valid');
+                        $('#managerLastname').val('').removeClass('is-valid');
+                        $('#managerContact').val('').removeClass('is-valid');
+                        $('#managerEmail').val('').removeClass('is-valid');
+                        $('#closeCreateStore').trigger('click');
+                    },
+                    error: function(error) {
+                        // Handle errors
+                        showAlert(error, 'danger');
+                    }
+                });
+            } else {
+                console.log('Validation failed!');
+            }
         } else if (state == 1) {
-            console.log('It is 1');
+            console.log('it is 1');
         } else {
             console.log('Invalid State!');
         }
     });
+    
     
     
 });

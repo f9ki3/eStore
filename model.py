@@ -213,8 +213,47 @@ class Delivery():
 class Supplier():
     ...
 
-class Store():
-    ...
+class Store:
+    def insertStore(self, storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerFirstname, managerLastname, managerContact, managerEmail):
+        conn = Database().conn
+        
+        try:
+            cursor = conn.cursor()
+            dataManager = (managerFirstname, managerLastname, managerContact, managerEmail)
+            
+            cursor.execute('''
+            INSERT INTO manager (manager_firstname, manager_lastname, manager_contact, manager_email)
+            VALUES (?, ?, ?, ?)
+            ''', dataManager)
+            conn.commit()
+            print('Inserted manager')
+            
+            cursor.execute('''
+            SELECT id FROM manager WHERE manager_firstname = ? AND manager_lastname = ? AND manager_contact = ? AND manager_email = ?
+            ''', dataManager)
+            manager_id_row = cursor.fetchone()
+            
+            if manager_id_row:
+                manager_id = manager_id_row[0]
+                dataStore = (storeLogo, storeName, storeOwner, storeEmail, storeAddress, manager_id)
+                
+                cursor.execute('''
+                INSERT INTO store (store_logo, store_name, store_owner, store_email, store_address, store_manager_id)
+                VALUES (?, ?, ?, ?, ?, ?)
+                ''', dataStore)
+                conn.commit()
+                print('Inserted store record!')
+            else:
+                print('Manager ID not found, insertion failed.')
+        
+        except Exception as e:
+            conn.rollback()
+            print(f'An error occurred: {e}')
+        
+        finally:
+            conn.close()
+
+
 
 class Manager():
     ...
