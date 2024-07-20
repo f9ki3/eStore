@@ -73,7 +73,7 @@ $(document).ready(function() {
                     contentType: false,
                     success: function(response) {
                         // Handle the response from the server
-                        showAlert(response, 'warning');
+                        showAlert('Insert store record!', 'warning');
                         // Clear the values and remove the 'is-valid' class from the specified elements
                         $('#storeImage').val('').removeClass('is-valid');
                         $('#storeName').val('').removeClass('is-valid');
@@ -85,6 +85,8 @@ $(document).ready(function() {
                         $('#managerContact').val('').removeClass('is-valid');
                         $('#managerEmail').val('').removeClass('is-valid');
                         $('#closeCreateStore').trigger('click');
+                        // Update the table
+                        fetStoreTable()
                     },
                     error: function(error) {
                         // Handle errors

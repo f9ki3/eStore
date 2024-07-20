@@ -24,11 +24,12 @@
       </div>
     <div>
         <table class="table table-hover">
-        <thead>
+        <thead id="tableHead">
             <tr>
-                <th onclick="sortTable(0)">Name</th>
-                <th onclick="sortTable(1)">Age</th>
-                <th onclick="sortTable(2)">City</th>
+                <th>Image</th>
+                <th>Store Name</th>
+                <th>Address</th>
+                <th>Email</th>
             </tr>
         </thead>
         <tbody id="tableBody">
@@ -36,6 +37,12 @@
         </tbody>
     </table>
     </div>
-    <div class="pagination" id="pagination"></div>
-    <div id="info"></div>
+    <div class="row d-flex align-items-center">
+      <div class="col-12 col-md-6">
+        <div class="pagination" id="pagination"></div>
+      </div>
+      <div class="col-12 col-md-6 d-flex">
+        <div id="info" class="text-muted"></div>
+      </div>
+    </div>
 </div>

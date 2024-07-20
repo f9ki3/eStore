@@ -242,7 +242,7 @@ class Store:
                 VALUES (?, ?, ?, ?, ?, ?)
                 ''', dataStore)
                 conn.commit()
-                print('Inserted store record!')
+                return 'Inserted store record!'
             else:
                 print('Manager ID not found, insertion failed.')
         
