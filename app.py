@@ -1,6 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 from datetime import timedelta
+# Use the imported classes
 from model import *
+from database import Database
+from accounts import Accounts
+from store import Store
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
