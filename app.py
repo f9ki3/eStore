@@ -143,6 +143,30 @@ def update_privacy():
     else:
         return 'Method Not Allowed', 405
 
+@app.route('/insert_store', methods=['POST'])
+def insert_Store():
+    if request.method == 'POST':
+        if 'id' in session:
+            id = session['id']
+            #file of store image upload
+            file = request.files['storeImage']
+            file.save('static/store/' + file.filename)
+            storeLogo = file.filename
+            storeName = request.form.get('storeName')
+            storeOwner = request.form.get('storeOwner')
+            storeEmail = request.form.get('storeEmail')
+            storeAddress = request.form.get('storeAddress')
+            managerFirstname = request.form.get('managerFirstname')
+            managerLastname = request.form.get('managerLastname')
+            managerContact = request.form.get('managerContact')
+            managerEmail = request.form.get('managerEmail')
+            result = Store().insertStore(storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerFirstname, managerLastname, managerContact, managerEmail)
+            return result
+        else:
+            return 'Unauthorized', 401  # Handle case where session['id'] is not set
+    else:
+        return 'Method Not Allowed', 405
+
 
 if __name__ == '__main__':
     Database().createTables()

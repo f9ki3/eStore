@@ -3,15 +3,73 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="staticBackdropLabel">Create Store</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <h1 class="modal-title fs-5 fw-bolder" id="staticBackdropLabel">Create Store</h1>
+          <button id="closeCreateStore" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          ...
+            <div class="row g-2">
+                <div class="col-6 col-md-6">
+                    <p class="m-0">Upload Store Logo</p>
+                    <div class="input-group input-group-sm m-0">
+                        <input id="storeImage" type="file" class="form-control" id="inputGroupFile01">
+                    </div>
+                </div>
+                <div class="col-6 col-md-6">
+                    <p class="m-0">Store Name</p>
+                    <input id="storeName" type="text" class="form-control form-control-sm" placeholder="Enter store name">
+                </div>
+                <div class="col-6 col-md-6">
+                    <p class="m-0">Store Owner</p>
+                    <input id="storeOwner" type="text" class="form-control form-control-sm" placeholder="Enter store owner name">
+                </div>
+                <div class="col-6 col-md-6">
+                    <p class="m-0">Store E-mail</p>
+                    <input id="storeEmail" type="text" class="form-control form-control-sm" placeholder="Enter store email">
+                </div>
+                <div class="col-12 col-md-12">
+                    <p class="m-0">Store Address</p>
+                    <input id="storeAddress" type="text" class="form-control form-control-sm" placeholder="Enter store address">
+                </div>
+                <div class="col-12 col-md-12">
+                    <p class="m-0">Store manager</p>
+                    <div class="input-group input-group-sm">
+                        <button id="selectManager" class="btn btn-warning" style="border: 1px solid rgb(210, 210, 210)" type="button">Select Manager</button>
+                        <button id="createManager" class="btn" style="border: 1px solid rgb(210, 210, 210)" type="button">Create Manager</button>
+                    </div>
+                </div>
+                <div class="col-12" id="selectManager-select">
+                    <select id="itemsPerPage" class="form-select form-select-sm w-100">
+                        <option disabled selected>Select Managers</option>
+                        <option >John Doe</option>
+                        <option >Robert</option>
+                    </select>
+                </div>
+                <div class="col-12" id="selectManager-add" style="display: none;">
+                    <div class="row g-2">
+                        <div class="col-6">
+                            <p class="m-0">Manager Firstname</p>
+                            <input id="managerFirstname" type="text" class="form-control form-control-sm" placeholder="Enter firstname">
+                        </div>
+                        <div class="col-6">
+                            <p class="m-0">Manager Lastname</p>
+                            <input id="managerLastname" type="text" class="form-control form-control-sm" placeholder="Enter lastname">
+                        </div>
+                        <div class="col-6">
+                            <p class="m-0">Manager Contact</p>
+                            <input id="managerContact" type="text" class="form-control form-control-sm" placeholder="Enter contact">
+                        </div>
+                        <div class="col-6">
+                            <p class="m-0">Manager E-mail</p>
+                            <input id="managerEmail" type="text" class="form-control form-control-sm" placeholder="Enter email">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn border-danger text-danger" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-warning">Save</button>
+          <button id="cancelCreateStore" type="button" class="btn border-danger text-danger" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-warning" id="saveStore">Save</button>
         </div>
       </div>
     </div>
