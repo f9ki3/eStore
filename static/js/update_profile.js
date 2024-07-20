@@ -19,7 +19,7 @@ $(document).ready(function() {
 
         // Ajax request
         $.ajax({
-            url: '/update_about', // Replace with your server endpoint
+            url: '/update_about', // Replacep with your server endpoint
             type: 'POST',
             data: formData,
             processData: false,  // Important: prevent jQuery from processing the data

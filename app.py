@@ -12,10 +12,14 @@ app.secret_key = "sample_key"
 def index():
     return redirect('/login')
 
+@app.route('/table')
+def table():
+    return render_template('tables.html')
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     if 'users' in session:
-        return redirect('/landing')
+        return redirect('/app')
     else:
         if request.method == 'POST':
             username = request.form.get('uname')

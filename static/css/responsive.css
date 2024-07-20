@@ -9,6 +9,10 @@
     .login-illustartion{
         display: none;
     }
+
+    .side-nav{
+        display: none;
+    }
   }
 
 @media (min-width: 800px) {

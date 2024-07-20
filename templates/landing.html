@@ -5,7 +5,7 @@
 {% block content %}
     <div class="container">
         <div class="row">
-            <div class="col-12 col-md-3 mb-3">
+            <div class="col-12 col-md-3 mb-3 side-nav">
                 <div class=" border rounded p-3">
                   <h5 class="mb-3 fw-bolder">Menu</h5>
                     <a id="btn_dashboard" class="settings-btn btn btn-light w-100 text-start mb-2"><i class="bi me-3 bi-house-door"></i>Dashboard</a>
@@ -184,54 +184,59 @@
 
                 <div class="border rounded p-3 mb-3" id="store" style="display: none;">
                     <h5 class="mb-3 fw-bolder">Manage Store</h5>
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
-                            <div></div>
+                    {% include 'table_store.html' %}
+                    {% include 'modals.html' %}
+                    <div style="display: none;">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
+                                <div></div>
+                            </div>
+                            <div style="height: 100px; width: 100px" class="rounded">
+                                <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
+                            </div>
                         </div>
-                        <div style="height: 100px; width: 100px" class="rounded">
-                            <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="{{ url_for('static', filename='/uploads/wwezdR1.jpeg') }}" alt="">
+                        <hr class="text-muted">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
+                                <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            </div>
+                            <p class="text-muted">Magabait Store</p>
                         </div>
-                    </div>
-                    <hr class="text-muted">
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <hr class="text-muted">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
+                                <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            </div>
+                            <p class="text-muted">Fyke Lleva</p>
                         </div>
-                        <p class="text-muted">Magabait Store</p>
-                    </div>
-                    <hr class="text-muted">
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <hr class="text-muted">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Address</label></div>
+                                <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            </div>
+                            <p class="text-muted">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
                         </div>
-                        <p class="text-muted">Fyke Lleva</p>
-                    </div>
-                    <hr class="text-muted">
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Address</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <hr class="text-muted">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Email</label></div>
+                                <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            </div>
+                            <p class="text-muted">floterina@gmail.com</p>
                         </div>
-                        <p class="text-muted">Block 5 Lot 3 Platinum Village, Loma De Gato, Marilao, Bulacan</p>
-                    </div>
-                    <hr class="text-muted">
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Email</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <hr class="text-muted">
+                        <div>
+                            <div class="d-flex flex-row justify-content-between mb-2">
+                                <div><label for="" class="fw-bolder text-muted">Contact</label></div>
+                                <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                            </div>
+                            <p class="text-muted">+639098798767</p>
                         </div>
-                        <p class="text-muted">floterina@gmail.com</p>
-                    </div>
-                    <hr class="text-muted">
-                    <div>
-                        <div class="d-flex flex-row justify-content-between mb-2">
-                            <div><label for="" class="fw-bolder text-muted">Contact</label></div>
-                            <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
-                        </div>
-                        <p class="text-muted">+639098798767</p>
+
                     </div>
                 </div>
 
