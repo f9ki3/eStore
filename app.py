@@ -5,6 +5,7 @@ from model import *
 from database import Database
 from accounts import Accounts
 from store import Store
+from managers import Manager
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
@@ -171,7 +172,6 @@ def insert_Store():
     else:
         return 'Method Not Allowed', 405
 
-
 @app.route('/get_store', methods=['GET'])
 def get_store():
     if request.method == 'GET':
@@ -179,7 +179,16 @@ def get_store():
         return jsonify(data)
     else:
         return 'Method Not Allowed', 405
-
+    
+@app.route('/get_select_manager', methods=['GET'])
+def getsSelectManager():
+    if request.method == 'GET':
+        data = Manager().getSelectManagers()
+        print(data)
+        return jsonify(data)
+    else:
+        return 'Method Not Allowed', 405
+    
 if __name__ == '__main__':
     Database().createTables()
     app.run(debug=True, host='0.0.0.0')

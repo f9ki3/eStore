@@ -13,6 +13,15 @@
     .side-nav{
         display: none;
     }
+    .store-address, .store-email, .store-owner{
+        display: none;
+    }
+    .store-name{
+        width: 20%;
+    }
+    .store-image{
+        width: 0%;
+    }
   }
 
 @media (min-width: 800px) {

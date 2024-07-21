@@ -53,4 +53,3 @@ class Store:
         for entry in data_dicts:
             jsonData.append(entry)
         return jsonData
-

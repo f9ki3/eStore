@@ -43,10 +43,19 @@ function fetStoreTable() {
                 tableBody.empty();
                 paginatedData.forEach(item => {
                     const row = `<tr>
-                                    <td><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
-                                    <td>${item.store_name}</td>
-                                    <td>${item.address}</td>
-                                    <td>${item.email}</td>
+                                    <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
+                                    <td class="store-name">${item.store_name}</td>
+                                    <td class="store-owner">${item.owner_name}</td>
+                                    <td class="store-address">${item.address}</td>
+                                    <td class="store-email">${item.email}</td>
+                                    <td>
+                                        <button style="background: transparent; border: none;">
+                                            <i class="bi text-primary bi-pencil-square"></i>
+                                        </button>
+                                        <button style="background: transparent; border: none;">
+                                            <i class="bi text-danger bi-trash"></i>
+                                        </button>
+                                    </td>
                                 </tr>`;
 
                     tableBody.append(row);
@@ -62,6 +71,7 @@ function fetStoreTable() {
                 const searchText = $('#search').val().toLowerCase();
                 const filteredData = data.filter(item =>
                     item.store_name.toLowerCase().includes(searchText) ||
+                    item.owner_name.toLowerCase().includes(searchText) ||
                     item.address.toLowerCase().includes(searchText) ||
                     item.email.toLowerCase().includes(searchText)
                 );

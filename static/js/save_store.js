@@ -87,6 +87,7 @@ $(document).ready(function() {
                         $('#closeCreateStore').trigger('click');
                         // Update the table
                         fetStoreTable()
+                        getSelectManager()
                     },
                     error: function(error) {
                         // Handle errors
