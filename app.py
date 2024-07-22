@@ -5,6 +5,7 @@ from model import *
 from database import Database
 from accounts import Accounts
 from store import Store
+from managers import Manager
 
 app = Flask(__name__)
 app.permanent_session_lifetime = timedelta(days=5)
@@ -171,6 +172,26 @@ def insert_Store():
     else:
         return 'Method Not Allowed', 405
 
+@app.route('/insert_store_id', methods=['POST'])
+def insert_Store_id():
+    if request.method == 'POST':
+        if 'id' in session:
+            id = session['id']
+            #file of store image upload
+            file = request.files['storeImage']
+            file.save('static/store/' + file.filename)
+            storeLogo = file.filename
+            storeName = request.form.get('storeName')
+            storeOwner = request.form.get('storeOwner')
+            storeEmail = request.form.get('storeEmail')
+            storeAddress = request.form.get('storeAddress')
+            managerID = request.form.get('managerID')
+            result = Store().insertStoreID(storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerID)
+            return result
+        else:
+            return 'Unauthorized', 401  # Handle case where session['id'] is not set
+    else:
+        return 'Method Not Allowed', 405
 
 @app.route('/get_store', methods=['GET'])
 def get_store():
@@ -179,7 +200,29 @@ def get_store():
         return jsonify(data)
     else:
         return 'Method Not Allowed', 405
+    
+@app.route('/get_select_manager', methods=['GET'])
+def getsSelectManager():
+    if request.method == 'GET':
+        data = Manager().getSelectManagers()
+        # print(data)
+        return jsonify(data)
+    else:
+        return 'Method Not Allowed', 405
 
+@app.route('/delete_store_id', methods=['POST'])
+def delete_store_id():
+    if request.method == 'POST':
+        store_delete_id = request.form.get('storeDeleteId')
+        Store().deleteStore(store_delete_id)
+        if store_delete_id:
+            # Process the store_delete_id here (e.g., delete the store from the database)
+            return jsonify({'status': 'success', 'storeDeleteId': store_delete_id})
+        else:
+            return jsonify({'status': 'error', 'message': 'No storeDeleteId provided'}), 400
+    else:
+        return 'Method Not Allowed', 405
+    
 if __name__ == '__main__':
     Database().createTables()
     app.run(debug=True, host='0.0.0.0')
