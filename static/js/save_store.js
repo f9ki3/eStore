@@ -157,7 +157,7 @@ $(document).ready(function() {
                         $('#managerID').val('').removeClass('is-valid');
                         $('#closeCreateStore').trigger('click');
                         // Update the table
-                        fetchStoreTable();
+                        fetStoreTable()
                     },
                     error: function(error) {
                         // Handle errors

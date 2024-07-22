@@ -38,28 +38,32 @@ function fetStoreTable() {
                     item.email.toLowerCase().includes(searchText)
                 );
 
-                const paginatedData = filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
+                if (filteredData.length === 0) {
+                    tableBody.html('<tr><td colspan="6" style="text-align: center;">No items found.</td></tr>');
+                } else {
+                    const paginatedData = filteredData.slice((currentPage - 1) * rowsPerPage, currentPage * rowsPerPage);
 
-                tableBody.empty();
-                paginatedData.forEach(item => {
-                    const row = `<tr>
-                                    <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
-                                    <td class="store-name">${item.store_name}</td>
-                                    <td class="store-owner">${item.owner_name}</td>
-                                    <td class="store-address">${item.address}</td>
-                                    <td class="store-email">${item.email}</td>
-                                    <td>
-                                        <button style="background: transparent; border: none;">
-                                            <i class="bi text-primary bi-pencil-square"></i>
-                                        </button>
-                                        <button style="background: transparent; border: none;">
-                                            <i class="bi text-danger bi-trash"></i>
-                                        </button>
-                                    </td>
-                                </tr>`;
-
-                    tableBody.append(row);
-                });
+                    tableBody.empty();
+                    paginatedData.forEach(item => {
+                        const row = `<tr style="font-size: 14px">
+                                        <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
+                                        <td class="store-name">${item.store_name}</td>
+                                        <td class="store-owner">${item.owner_name}</td>
+                                        <td class="store-address">${item.address}</td>
+                                        <td class="store-email">${item.email}</td>
+                                        <td data-store-id="${item.id}" class="store-action" style="text-align: right; align-items: center;">
+                                            <button style="background: transparent; border: none;">
+                                                <i class="bi text-primary bi-pencil-square"></i>
+                                            </button>
+                                            <button id="deleteStore" style="background: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#deleteStoreModal">
+                                                <i class="bi text-danger bi-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>`;
+                        
+                        tableBody.append(row);
+                    });
+                }
 
                 // Update info section with total items and items per page
                 const totalItems = filteredData.length;
@@ -161,4 +165,14 @@ function fetStoreTable() {
     });
 }
 
+
 fetStoreTable();
+
+
+$(document).on('click', '#deleteStore', function() {
+    // Get the data-store-id attribute from the parent <td> element
+    const storeId = $(this).closest('td').attr('data-store-id');
+    // Display the store ID in the #inputStoreID element
+    $('#storeDeleteID').val(storeId);
+    // alert('Store ID: ' + storeId); // Optional: For testing purposes
+});

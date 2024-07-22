@@ -209,6 +209,19 @@ def getsSelectManager():
         return jsonify(data)
     else:
         return 'Method Not Allowed', 405
+
+@app.route('/delete_store_id', methods=['POST'])
+def delete_store_id():
+    if request.method == 'POST':
+        store_delete_id = request.form.get('storeDeleteId')
+        Store().deleteStore(store_delete_id)
+        if store_delete_id:
+            # Process the store_delete_id here (e.g., delete the store from the database)
+            return jsonify({'status': 'success', 'storeDeleteId': store_delete_id})
+        else:
+            return jsonify({'status': 'error', 'message': 'No storeDeleteId provided'}), 400
+    else:
+        return 'Method Not Allowed', 405
     
 if __name__ == '__main__':
     Database().createTables()

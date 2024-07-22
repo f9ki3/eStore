@@ -13,14 +13,17 @@
     .side-nav{
         display: none;
     }
-    .store-address, .store-email, .store-owner{
+    .store-address, .store-email{
         display: none;
     }
-    .store-name{
+    .store-name, .store-owner{
         width: 20%;
     }
     .store-image{
         width: 0%;
+    }
+    .store-action{
+        width: 15%;
     }
   }
 

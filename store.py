@@ -69,3 +69,8 @@ class Store:
         for entry in data_dicts:
             jsonData.append(entry)
         return jsonData
+    
+    def deleteStore(self, store_delete_id):
+        conn = Database().conn
+        conn.cursor().execute('DELETE FROM store WHERE id = ?', (store_delete_id,))
+        conn.commit()
