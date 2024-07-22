@@ -45,21 +45,22 @@ function fetStoreTable() {
 
                     tableBody.empty();
                     paginatedData.forEach(item => {
-                        const row = `<tr id="viewStore" data-store-id="${item.id}" style="font-size: 14px; cursor: pointer">
+                        const row = `<tr class="view-store-row" data-store-id="${item.id}" style="font-size: 14px; cursor: pointer">
                                         <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
                                         <td class="store-name">${item.store_name}</td>
                                         <td class="store-owner">${item.owner_name}</td>
                                         <td class="store-address">${item.address}</td>
                                         <td class="store-email">${item.email}</td>
                                         <td data-store-id="${item.id}" class="store-action" style="text-align: right; align-items: center;">
-                                            <button style="background: transparent; border: none;">
+                                            <button class="edit-store" style="background: transparent; border: none;">
                                                 <i class="bi text-primary bi-pencil-square"></i>
                                             </button>
-                                            <button id="deleteStore" style="background: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#deleteStoreModal">
+                                            <button class="delete-store" style="background: transparent; border: none;" data-bs-toggle="modal" data-bs-target="#deleteStoreModal">
                                                 <i class="bi text-danger bi-trash"></i>
                                             </button>
                                         </td>
                                     </tr>`;
+
                         
                         tableBody.append(row);
                     });
@@ -177,24 +178,33 @@ $(document).on('click', '#deleteStore', function() {
     // alert('Store ID: ' + storeId); // Optional: For testing purposes
 });
 
-$(document).on('click', '#viewStore', function() {
-    const storeId = $(this).data('store-id');
-    $.ajax({
-        url: '/get_view_store',
-        type: 'GET',
-        data: { id: storeId },
-        success: function(response) {
-            // Handle the response data
-            $('#storeTable').hide()
-            $('#viewStoreDiv, #backToStore').show()
-        },
-        error: function(xhr, status, error) {
-            console.error('Error fetching store data:', error);
-            showAlert('Server Error | 404', 'danger');
-            // Handle the error
-        }
+$(document).ready(function() {
+    // Handle the row click
+    $(document).on('click', '.view-store-row', function() {
+        const storeId = $(this).data('store-id');
+        
+        $.ajax({
+            url: '/get_view_store',
+            type: 'GET',
+            data: { id: storeId },
+            success: function(response) {
+                // Handle the response data
+                $('#storeTable').hide()
+                $('#viewStoreDiv, #backToStore').show()
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching store data:', error);
+                // Handle the error
+            }
+        });
+    });
+
+    // Prevent row click when clicking on edit or delete buttons
+    $(document).on('click', '.edit-store, .delete-store', function(event) {
+        event.stopPropagation();
     });
 });
+
 
 $(document).on('click', '#backToStore', function() {
     $('#storeTable').show()
