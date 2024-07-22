@@ -183,10 +183,14 @@
                 </div>
 
                 <div class="border rounded p-3 mb-3" id="store" style="display: none;">
-                    <h5 class="mb-3 fw-bolder">Manage Store</h5>
-                    {% include 'table_store.html' %}
-                    {% include 'modals.html' %}
-                    <div style="display: none;">
+                    <div class="d-flex flex-row justify-content-between align-items-center">
+                        <h5 class="mb-3 fw-bolder">Manage Store</h5>
+                        <button id="backToStore" style="display: none;" class=" btn btn-sm border">Back to Store</button>
+                    </div>
+                    <div id="storeTable">
+                        {% include 'table_store.html' %}
+                    </div>
+                    <div id="viewStoreDiv" style="display: none;"">
                         <div>
                             <div class="d-flex flex-row justify-content-between mb-2">
                                 <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
