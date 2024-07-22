@@ -6,7 +6,7 @@
           <h1 class="modal-title fs-5 fw-bolder" id="staticBackdropLabel">Create Store</h1>
           <button id="closeCreateStore" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-        <div class="modal-body">
+        <div class="modal-body" >
             <div class="row g-2">
                 <div class="col-6 col-md-6">
                     <p class="m-0">Upload Store Logo</p>
@@ -38,9 +38,13 @@
                     </div>
                 </div>
                 <div class="col-12" id="selectManager-select">
-                    <select id="managerSelect" style="width: 100%; z-index: 100px" class="form-select form-select-sm w-100">
-                        <option disabled selected>Select Managers</option>
-                    </select>
+                    <input type="hidden" id="managerID">
+                    <div class="custom-select-wrapper">
+                        <div class="custom-select">
+                            <input type="text" class="form-select form-select-sm" id="managerSearch" placeholder="Select a manager">
+                            <ul class="list-group" id="managerList"></ul>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-12" id="selectManager-add" style="display: none;">
                     <div class="row g-2">

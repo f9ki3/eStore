@@ -39,6 +39,22 @@ class Store:
         
         finally:
             conn.close()
+    
+    def insertStoreID(self, storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerID):
+        conn = Database().conn
+        try:
+            dataStore = (storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerID)
+            conn.cursor().execute('''
+            INSERT INTO store (store_logo, store_name, store_owner, store_email, store_address, store_manager_id)
+            VALUES (?, ?, ?, ?, ?, ?)
+            ''', dataStore)
+            conn.commit()
+            return 'Inserted store record!'
+        except Exception as e:
+            conn.rollback()
+            print(f'An error occurred: {e}')
+        finally:
+            conn.close()
 
     def getStoreInfo(self):
         conn = Database().conn

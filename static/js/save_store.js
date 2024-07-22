@@ -98,7 +98,75 @@ $(document).ready(function() {
                 console.log('Validation failed!');
             }
         } else if (state == 1) {
-            console.log('it is 1');
+            var storeName = $('#storeName').val();
+            var storeOwner = $('#storeOwner').val();
+            var storeEmail = $('#storeEmail').val();
+            var storeAddress = $('#storeAddress').val();
+            var managerID = $('#managerID').val();
+            var storeImage = $('#storeImage')[0].files[0];
+
+            console.log(managerID);
+
+            // Define regex patterns for email and 11-digit number
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var numberPattern = /^\d{11}$/;
+
+            // Validate inputs
+            function validateInput(selector, value, pattern = null) {
+                if (!value || (pattern && !pattern.test(value))) {
+                    $(selector).removeClass('is-valid').addClass('is-invalid');
+                } else {
+                    $(selector).removeClass('is-invalid').addClass('is-valid');
+                }
+            }
+
+            validateInput('#storeName', storeName);
+            validateInput('#storeOwner', storeOwner);
+            validateInput('#storeEmail', storeEmail, emailPattern);
+            validateInput('#storeAddress', storeAddress);
+            validateInput('#managerID', managerID);
+            validateInput('#storeImage', storeImage ? 'file selected' : '');
+
+            // Check if all inputs are valid
+            if ($('.is-invalid').length === 0) {
+                // Create a FormData object and append input values
+                var formData = new FormData();
+                formData.append('storeImage', storeImage);
+                formData.append('storeName', storeName);
+                formData.append('storeOwner', storeOwner);
+                formData.append('storeEmail', storeEmail);
+                formData.append('storeAddress', storeAddress);
+                formData.append('managerID', managerID);
+
+                // Send the data using Ajax
+                $.ajax({
+                    url: 'insert_store_id',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(response) {
+                        // Handle the response from the server
+                        showAlert('Insert store record!', 'warning');
+                        // Clear the values and remove the 'is-valid' class from the specified elements
+                        $('#storeImage').val('').removeClass('is-valid');
+                        $('#storeName').val('').removeClass('is-valid');
+                        $('#storeOwner').val('').removeClass('is-valid');
+                        $('#storeEmail').val('').removeClass('is-valid');
+                        $('#storeAddress').val('').removeClass('is-valid');
+                        $('#managerID').val('').removeClass('is-valid');
+                        $('#closeCreateStore').trigger('click');
+                        // Update the table
+                        fetchStoreTable();
+                    },
+                    error: function(error) {
+                        // Handle errors
+                        showAlert(error.responseText, 'danger');
+                    }
+                });
+            } else {
+                console.log('Validation failed!');
+            }
         } else {
             console.log('Invalid State!');
         }

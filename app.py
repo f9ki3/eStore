@@ -172,6 +172,27 @@ def insert_Store():
     else:
         return 'Method Not Allowed', 405
 
+@app.route('/insert_store_id', methods=['POST'])
+def insert_Store_id():
+    if request.method == 'POST':
+        if 'id' in session:
+            id = session['id']
+            #file of store image upload
+            file = request.files['storeImage']
+            file.save('static/store/' + file.filename)
+            storeLogo = file.filename
+            storeName = request.form.get('storeName')
+            storeOwner = request.form.get('storeOwner')
+            storeEmail = request.form.get('storeEmail')
+            storeAddress = request.form.get('storeAddress')
+            managerID = request.form.get('managerID')
+            result = Store().insertStoreID(storeLogo, storeName, storeOwner, storeEmail, storeAddress, managerID)
+            return result
+        else:
+            return 'Unauthorized', 401  # Handle case where session['id'] is not set
+    else:
+        return 'Method Not Allowed', 405
+
 @app.route('/get_store', methods=['GET'])
 def get_store():
     if request.method == 'GET':
@@ -184,7 +205,7 @@ def get_store():
 def getsSelectManager():
     if request.method == 'GET':
         data = Manager().getSelectManagers()
-        print(data)
+        # print(data)
         return jsonify(data)
     else:
         return 'Method Not Allowed', 405

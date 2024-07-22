@@ -1,38 +1,60 @@
-function getSelectManager(){
-    $(document).ready(function(){
-        $.ajax({
-    url: '/get_select_manager',
-    method: 'GET',
-    dataType: 'json',
-    success: function(data) {
-        var select = $('#managerSelect');
-        select.empty(); // Clear existing options
+function getSelectManager() {
+        $.getJSON('/get_select_manager', function(data) {
+            const $managerSearch = $('#managerSearch');
+            const $managerList = $('#managerList');
 
-        // Loop through the data and add options to the select element
-        $.each(data, function(key, value) {
-            // Assuming "id" is one of the keys
-            var id = value.id;
+            const showDropdown = () => {
+                $managerList.show();
+            };
 
-            // Concatenate first name and last name (if available)
-            var fullName = value.manager_firstname + ' ' + value.manager_lastname;
+            const hideDropdown = () => {
+                $managerList.hide();
+            };
 
-            // Create an option element
-            var option = new Option(fullName, id);
+            const populateList = (searchValue = '') => {
+                $managerList.empty(); // Clear existing options
+                data.forEach(item => {
+                    const fullName = `${item.manager_firstname} ${item.manager_lastname}`;
+                    if (fullName.toLowerCase().includes(searchValue)) {
+                        const $li = $('<li></li>')
+                            .text(fullName)
+                            .attr('data-value', item.id)
+                            .addClass('text-muted small'); // Add the Bootstrap class
+                    
+                        $li.on('click', () => {
+                            $managerSearch.val(fullName);
+                            hideDropdown();
+                            // Handle selection if needed
+                            var selectManagerID = item.id;
 
-            // Append the option to the select element
-            select.append(option);
+                            $('#managerID').val(selectManagerID)
+                        });
+                    
+                        $managerList.append($li);
+                    }
+                    
+                });
+            };
+
+            $managerSearch.on('focus click', () => {
+                populateList();
+                showDropdown();
+            });
+
+            $managerSearch.on('input', () => {
+                const searchValue = $managerSearch.val().toLowerCase();
+                populateList(searchValue);
+            });
+
+            // Hide the dropdown if clicked outside
+            $(document).on('click', function(event) {
+                if (!$(event.target).closest('.custom-select-wrapper').length) {
+                    hideDropdown();
+                }
+            });
+        }).fail(function(error) {
+            console.error('Error fetching data:', error);
         });
-
-        // Initialize Select2
-        select.select2();
-    },
-    error: function(jqXHR, textStatus, errorThrown) {
-        console.log('Error: ' + textStatus + ' - ' + errorThrown);
-    }
-});
-
-        
-    });
 }
 
-getSelectManager()
+getSelectManager();
