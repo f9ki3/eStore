@@ -74,3 +74,9 @@ class Store:
         conn = Database().conn
         conn.cursor().execute('DELETE FROM store WHERE id = ?', (store_delete_id,))
         conn.commit()
+    
+    def viewStore(self, store_view_id):
+        conn = Database().conn
+        data = conn.cursor().execute('SELECT * FROM store WHERE id = ?', (store_view_id,)).fetchone()
+        conn.commit()
+        return data

@@ -45,7 +45,7 @@ function fetStoreTable() {
 
                     tableBody.empty();
                     paginatedData.forEach(item => {
-                        const row = `<tr style="font-size: 14px">
+                        const row = `<tr id="viewStore" data-store-id="${item.id}" style="font-size: 14px; cursor: pointer">
                                         <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
                                         <td class="store-name">${item.store_name}</td>
                                         <td class="store-owner">${item.owner_name}</td>
@@ -175,4 +175,28 @@ $(document).on('click', '#deleteStore', function() {
     // Display the store ID in the #inputStoreID element
     $('#storeDeleteID').val(storeId);
     // alert('Store ID: ' + storeId); // Optional: For testing purposes
+});
+
+$(document).on('click', '#viewStore', function() {
+    const storeId = $(this).data('store-id');
+    $.ajax({
+        url: '/get_view_store',
+        type: 'GET',
+        data: { id: storeId },
+        success: function(response) {
+            // Handle the response data
+            $('#storeTable').hide()
+            $('#viewStoreDiv, #backToStore').show()
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching store data:', error);
+            showAlert('Server Error | 404', 'danger');
+            // Handle the error
+        }
+    });
+});
+
+$(document).on('click', '#backToStore', function() {
+    $('#storeTable').show()
+    $('#viewStoreDiv, #backToStore').hide()
 });

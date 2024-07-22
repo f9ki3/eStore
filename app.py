@@ -222,6 +222,15 @@ def delete_store_id():
             return jsonify({'status': 'error', 'message': 'No storeDeleteId provided'}), 400
     else:
         return 'Method Not Allowed', 405
+
+@app.route('/get_view_store', methods=['GET'])
+def get_view_store():
+    if request.method == 'GET':
+        store_view_id = request.form.get('id')
+        data = Store().viewStore(store_view_id)
+        return jsonify(data)
+    else:
+        return 'Method Not Allowed', 405
     
 if __name__ == '__main__':
     Database().createTables()
