@@ -1,4 +1,5 @@
-function getSelectManager() {
+$(document).ready(function() {
+    function getSelectManager() {
         $.getJSON('/get_select_manager', function(data) {
             const $managerSearch = $('#managerSearch');
             const $managerList = $('#managerList');
@@ -25,14 +26,12 @@ function getSelectManager() {
                             $managerSearch.val(fullName);
                             hideDropdown();
                             // Handle selection if needed
-                            var selectManagerID = item.id;
-
-                            $('#managerID').val(selectManagerID)
+                            const selectManagerID = item.id;
+                            $('#managerID').val(selectManagerID);
                         });
                     
                         $managerList.append($li);
                     }
-                    
                 });
             };
 
@@ -55,6 +54,7 @@ function getSelectManager() {
         }).fail(function(error) {
             console.error('Error fetching data:', error);
         });
-}
+    }
 
-getSelectManager();
+    getSelectManager();
+});
