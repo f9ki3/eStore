@@ -168,7 +168,7 @@ function fetStoreTable() {
 
 fetStoreTable();
 
-
+/asasas
 $(document).on('click', '#deleteStore', function() {
     // Get the data-store-id attribute from the parent <td> element
     const storeId = $(this).closest('td').attr('data-store-id');
