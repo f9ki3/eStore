@@ -55,6 +55,8 @@ $(document).ready(function() {
             console.error('Error fetching data:', error);
         });
     }
-    console.log('success!')
+// asasasas
+//asasass
+//asasassa
     getSelectManager();
 });
