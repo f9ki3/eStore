@@ -185,8 +185,61 @@ $(document).on('click', '#viewStore', function() {
         data: { id: storeId },
         success: function(response) {
             // Handle the response data
-            $('#storeTable').hide()
-            $('#viewStoreDiv, #backToStore').show()
+            $('#storeTable').hide();
+            $('#viewStoreDiv, #backToStore').show();
+
+            // Assuming response is a JSON object with the store information
+            $('#viewStoreDiv').html(`
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
+                        <div></div>
+                    </div>
+                    <div style="height: 100px; width: 100px" class="rounded">
+                        <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="../static/store/${response.store_logo}" alt="">
+                    </div>
+                </div>
+                <hr class="text-muted">
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
+                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                    </div>
+                    <p class="text-muted">${response.store_name}</p>
+                </div>
+                <hr class="text-muted">
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
+                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                    </div>
+                    <p class="text-muted">${response.store_owner}</p>
+                </div>
+                <hr class="text-muted">
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Address</label></div>
+                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                    </div>
+                    <p class="text-muted">${response.store_address}</p>
+                </div>
+                <hr class="text-muted">
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Email</label></div>
+                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                    </div>
+                    <p class="text-muted">${response.store_email}</p>
+                </div>
+                <hr class="text-muted">
+                <div>
+                    <div class="d-flex flex-row justify-content-between mb-2">
+                        <div><label for="" class="fw-bolder text-muted">Contact</label></div>
+                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                    </div>
+                    <p class="text-muted">${response.store_contact}</p>
+                </div>
+            `);
         },
         error: function(xhr, status, error) {
             console.error('Error fetching store data:', error);
@@ -195,6 +248,7 @@ $(document).on('click', '#viewStore', function() {
         }
     });
 });
+
 
 $(document).on('click', '#backToStore', function() {
     $('#storeTable').show()

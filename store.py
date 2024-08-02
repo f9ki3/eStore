@@ -77,6 +77,14 @@ class Store:
     
     def viewStore(self, store_view_id):
         conn = Database().conn
-        data = conn.cursor().execute('SELECT * FROM store WHERE id = ?', (store_view_id,)).fetchone()
-        conn.commit()
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM store WHERE id = ?', (store_view_id,))
+        row = cursor.fetchone()
+        
+        if row:
+            column_names = [description[0] for description in cursor.description]
+            data = dict(zip(column_names, row))
+        else:
+            data = {}
+
         return data
