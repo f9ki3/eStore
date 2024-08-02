@@ -226,8 +226,9 @@ def delete_store_id():
 @app.route('/get_view_store', methods=['GET'])
 def get_view_store():
     if request.method == 'GET':
-        store_view_id = request.form.get('id')
-        data = Store().viewStore(store_view_id)
+        store_id = request.args.get('id')
+        data = Store().viewStore(store_id)
+        print(data)
         return jsonify(data)
     else:
         return 'Method Not Allowed', 405
