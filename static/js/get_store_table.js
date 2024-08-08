@@ -201,7 +201,7 @@ $(document).on('click', '#viewStore', function() {
                         <div style="height: 100px; width: 100px" class="rounded border">
                             <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="../static/store/${response.store_logo}" alt="">
                         </div>
-                        <button id="changeprofile" class="btn border btn-lg rounded rounded-5 btn-light" style="position: absolute; left: 25px; top: 30px; opacity: 70%"><i class="bi bi-camera-fill"></i></button>
+                        <button id="changeStoreProfile"  class="btn border btn-lg rounded rounded-5 btn-light" style="display: none; position: absolute; left: 25px; top: 30px; opacity: 70%"><i class="bi bi-camera-fill"></i></button>
                     </div>
                 </div>
                 <hr class="text-muted">
@@ -210,8 +210,8 @@ $(document).on('click', '#viewStore', function() {
                         <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
                         <div></div>
                     </div>
-                    <p class="text-muted">${response.store_name}</p>
-                    <input class="form-control" value="${response.store_name}">
+                    <p id="editStoreName" class="text-muted">${response.store_name}</p>
+                    <input id="inputStoreName" style="display: none" class="form-control" value="${response.store_name}">
                 </div>
                 <hr class="text-muted">
                 <div>
@@ -219,8 +219,8 @@ $(document).on('click', '#viewStore', function() {
                         <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
                         <div></div>
                     </div>
-                    <p class="text-muted">${response.store_owner}</p>
-                    <input class="form-control" value="${response.store_owner}">
+                    <p id="editStoreOwner" class="text-muted">${response.store_owner}</p>
+                    <input id="inputStoreOwner" style="display: none" class="form-control" value="${response.store_owner}">
                 </div>
                 <hr class="text-muted">
                 <div>
@@ -228,8 +228,8 @@ $(document).on('click', '#viewStore', function() {
                         <div><label for="" class="fw-bolder text-muted">Address</label></div>
                         <div></div>
                     </div>
-                    <p class="text-muted">${response.store_address}</p>
-                    <input class="form-control" value="${response.store_address}">
+                    <p id="editStoreAddress" class="text-muted">${response.store_address}</p>
+                    <input id="inputStoreAddress" style="display: none" class="form-control" value="${response.store_address}">
                 </div>
                 <hr class="text-muted">
                 <div>
@@ -237,17 +237,17 @@ $(document).on('click', '#viewStore', function() {
                         <div><label for="" class="fw-bolder text-muted">Email</label></div>
                         <div></div>
                     </div>
-                    <p class="text-muted">${response.store_email}</p>
-                    <input class="form-control" value="${response.store_email}">
+                    <p id="editStoreEmail" class="text-muted">${response.store_email}</p>
+                    <input id="inputStoreEmail" style="display: none" class="form-control" value="${response.store_email}">
                 </div>
-                <div class="row mt-3">
+                <div class="row mt-3" style="display: none" id="optionStore">
                     <div class="col-12 col-md-3">
                         <div class="row g-2">
                             <div class="col-6 col-md-6">
                                 <button class="btn btn-sm w-100 border">Save</button>
                             </div>
                             <div class="col-6 col-md-6">
-                                <button class="btn btn-sm w-100 border">Cancel</button>
+                                <button id="cancelEditStore" class="btn btn-sm w-100 border">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -266,4 +266,17 @@ $(document).on('click', '#viewStore', function() {
 $(document).on('click', '#backToStore', function() {
     $('#storeTable').show()
     $('#viewStoreDiv, #backToStore, #editStore').hide()
+    $('#editStoreName, #editStoreOwner, #editStoreAddress, #editStoreEmail').show()
+    $('#inputStoreName, #inputStoreOwner, #inputStoreAddress, #inputStoreEmail, #changeStoreProfile, #optionStore').hide()
 });
+
+$(document).on('click', '#editStore', function() {
+    $('#editStoreName, #editStoreOwner, #editStoreAddress, #editStoreEmail').hide()
+    $('#inputStoreName, #inputStoreOwner, #inputStoreAddress, #inputStoreEmail, #changeStoreProfile, #optionStore').show()
+});
+
+$(document).on('click', '#cancelEditStore', function() {
+    $('#editStoreName, #editStoreOwner, #editStoreAddress, #editStoreEmail').show()
+    $('#inputStoreName, #inputStoreOwner, #inputStoreAddress, #inputStoreEmail, #changeStoreProfile, #optionStore').hide()
+});
+
