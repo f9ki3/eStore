@@ -46,7 +46,7 @@ function fetStoreTable() {
                     tableBody.empty();
                     paginatedData.forEach(item => {
                         const row = `<tr id="viewStore" data-store-id="${item.id}" style="font-size: 14px; cursor: pointer">
-                                        <td class="store-image"><img class="border" style='border-radius: 10%; height: 40px; width: 40px' src='../static/store/${item.image}' alt='Store Image'></td>
+                                        <td class="store-image"><div style="height: 40px; width: 40px"><img class="border" style='object-fit:cover; border-radius: 10%; height: 100%; width: 100%' src='../static/store/${item.image}' alt='Store Image'></div></td>
                                         <td class="store-name">${item.store_name}</td>
                                         <td class="store-owner">${item.owner_name}</td>
                                         <td class="store-address">${item.address}</td>
@@ -188,7 +188,7 @@ $(document).on('click', '#viewStore', function() {
         success: function(response) {
             // Handle the response data
             $('#storeTable').hide();
-            $('#viewStoreDiv, #backToStore').show();
+            $('#viewStoreDiv, #backToStore, #editStore').show();
 
             // Assuming response is a JSON object with the store information
             $('#viewStoreDiv').html(`
@@ -197,41 +197,60 @@ $(document).on('click', '#viewStore', function() {
                         <div><label for="" class="fw-bolder text-muted">Store Logo</label></div>
                         <div></div>
                     </div>
-                    <div style="height: 100px; width: 100px" class="rounded">
-                        <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="../static/store/${response.store_logo}" alt="">
+                    <div style="position: relative">
+                        <div style="height: 100px; width: 100px" class="rounded border">
+                            <img class="rounded" style="object-fit: cover; height: 100%; width: 100%" src="../static/store/${response.store_logo}" alt="">
+                        </div>
+                        <button id="changeprofile" class="btn border btn-lg rounded rounded-5 btn-light" style="position: absolute; left: 25px; top: 30px; opacity: 70%"><i class="bi bi-camera-fill"></i></button>
                     </div>
                 </div>
                 <hr class="text-muted">
                 <div>
                     <div class="d-flex flex-row justify-content-between mb-2">
                         <div><label for="" class="fw-bolder text-muted">Store Name</label></div>
-                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <div></div>
                     </div>
                     <p class="text-muted">${response.store_name}</p>
+                    <input class="form-control" value="${response.store_name}">
                 </div>
                 <hr class="text-muted">
                 <div>
                     <div class="d-flex flex-row justify-content-between mb-2">
                         <div><label for="" class="fw-bolder text-muted">Store Owner</label></div>
-                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <div></div>
                     </div>
                     <p class="text-muted">${response.store_owner}</p>
+                    <input class="form-control" value="${response.store_owner}">
                 </div>
                 <hr class="text-muted">
                 <div>
                     <div class="d-flex flex-row justify-content-between mb-2">
                         <div><label for="" class="fw-bolder text-muted">Address</label></div>
-                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <div></div>
                     </div>
                     <p class="text-muted">${response.store_address}</p>
+                    <input class="form-control" value="${response.store_address}">
                 </div>
                 <hr class="text-muted">
                 <div>
                     <div class="d-flex flex-row justify-content-between mb-2">
                         <div><label for="" class="fw-bolder text-muted">Email</label></div>
-                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
+                        <div></div>
                     </div>
                     <p class="text-muted">${response.store_email}</p>
+                    <input class="form-control" value="${response.store_email}">
+                </div>
+                <div class="row mt-3">
+                    <div class="col-12 col-md-3">
+                        <div class="row g-2">
+                            <div class="col-6 col-md-6">
+                                <button class="btn btn-sm w-100 border">Save</button>
+                            </div>
+                            <div class="col-6 col-md-6">
+                                <button class="btn btn-sm w-100 border">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `);
         },
@@ -246,5 +265,5 @@ $(document).on('click', '#viewStore', function() {
 
 $(document).on('click', '#backToStore', function() {
     $('#storeTable').show()
-    $('#viewStoreDiv, #backToStore').hide()
+    $('#viewStoreDiv, #backToStore, #editStore').hide()
 });

@@ -185,12 +185,15 @@
                 <div class="border rounded p-3 mb-3" id="store" style="display: none;">
                     <div class="d-flex flex-row justify-content-between align-items-center">
                         <h5 class="mb-3 fw-bolder">Manage Store</h5>
-                        <button id="backToStore" style="display: none;" class=" btn btn-sm border"><i class="bi bi-arrow-left"></i></button>
+                        <div>
+                            <button id="editStore" style="display: none;" class=" btn btn-sm border"><i class="bi bi-pen me-2"></i>Edit</button>
+                            <button id="backToStore" style="display: none;" class=" btn btn-sm border"><i class="bi bi-arrow-left"></i></button>
+                        </div>
                     </div>
                     <div id="storeTable">
                         {% include 'table_store.html' %}
                     </div>
-                    <div id="viewStoreDiv" style="display: none;"">
+                    <div id="viewStoreDiv" style="display: none;">
                     </div>
                 </div>
 
