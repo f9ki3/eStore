@@ -59,7 +59,8 @@ function fetStoreTable() {
                                                 <i class="bi text-danger bi-trash"></i>
                                             </button>
                                         </td>
-                                    </tr>`;
+                                    </tr>
+                                    `;
                         
                         tableBody.append(row);
                     });
@@ -174,6 +175,7 @@ $(document).on('click', '#deleteStore', function() {
     const storeId = $(this).closest('td').attr('data-store-id');
     // Display the store ID in the #inputStoreID element
     $('#storeDeleteID').val(storeId);
+    $('#storeDeleteID').stopPropagation();
     // alert('Store ID: ' + storeId); // Optional: For testing purposes
 });
 
@@ -230,14 +232,6 @@ $(document).on('click', '#viewStore', function() {
                         <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
                     </div>
                     <p class="text-muted">${response.store_email}</p>
-                </div>
-                <hr class="text-muted">
-                <div>
-                    <div class="d-flex flex-row justify-content-between mb-2">
-                        <div><label for="" class="fw-bolder text-muted">Contact</label></div>
-                        <div><a href="" class="fw-bolder text-muted text-decoration-none">Edit</a></div>
-                    </div>
-                    <p class="text-muted">${response.store_contact}</p>
                 </div>
             `);
         },
